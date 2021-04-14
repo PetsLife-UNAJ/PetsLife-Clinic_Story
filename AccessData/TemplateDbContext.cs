@@ -1,18 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AccessData
 {
-    public class TemplateDbContext:DbContext
+    public class TemplateDbContext : DbContext
     {
         public TemplateDbContext(DbContextOptions<TemplateDbContext> options) : base(options) { }
 
-       //AÑADIR DBSET
-        //public DbSet<>  { get; set; }
-        //public DbSet<>  { get; set; }
+        //AÑADIR DBSETs
+        public DbSet<HistoriaClinica> HistoriasClinicas { get; set; }
+        public DbSet<Registro> Registros { get; set; }
     }
 }
