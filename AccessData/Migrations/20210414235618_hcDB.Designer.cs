@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20210414204253_hhccDB")]
-    partial class hhccDB
+    [Migration("20210414235618_hcDB")]
+    partial class hcDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace AccessData.Migrations
 
             modelBuilder.Entity("Domain.Models.HistoriaClinica", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("HistoriaClinicaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -30,14 +30,14 @@ namespace AccessData.Migrations
                     b.Property<int>("MascotaId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("HistoriaClinicaId");
 
                     b.ToTable("HistoriasClinicas");
                 });
 
             modelBuilder.Entity("Domain.Models.Registro", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RegistroId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -49,7 +49,7 @@ namespace AccessData.Migrations
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("RegistroId");
 
                     b.HasIndex("HistoriaClinicaId");
 

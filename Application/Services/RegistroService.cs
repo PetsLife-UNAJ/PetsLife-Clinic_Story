@@ -1,28 +1,41 @@
-﻿using Domain.ICommands;
-using Domain.IQueries;
+﻿using Domain.DTOs;
+using Domain.ICommands;
 using Domain.Models;
 
 namespace Application.Services
 {
     public interface IRegistroService
     {
-        Registro GetRegistroByHistoriaClinicaId(int id);
+        ResponseRegistro CreateRegistro(RegistroDTO registro);
     }
 
-    public class RegistroService:IRegistroService
+    public class RegistroService : IRegistroService
     {
         private readonly IGenericRepository _repository;
-        private readonly IRegistroQueries _query;
 
-        public RegistroService(IGenericRepository repository, IRegistroQueries query)
+        public RegistroService(IGenericRepository repository)
         {
             _repository = repository;
-            _query = query;
         }
 
-        public Registro GetRegistroByHistoriaClinicaId(int id)
+        public ResponseRegistro CreateRegistro(RegistroDTO registro)
         {
-            throw new System.NotImplementedException();
+            Registro entity = new Registro
+            {
+                HistoriaClinicaId = registro.HistoriaClinicaId,
+                Analisis = registro.Analisis
+            };
+
+            _repository.Add<Registro>(entity);
+
+            return new ResponseRegistro
+            {
+                RegistroId = entity.RegistroId,
+                Analisis = entity.Analisis,
+                HistoriaClinicaId = entity.HistoriaClinicaId
+            };
         }
+
+
     }
 }

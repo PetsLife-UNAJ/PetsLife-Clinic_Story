@@ -2,7 +2,7 @@
 
 namespace AccessData.Migrations
 {
-    public partial class hhccDB : Migration
+    public partial class hcDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,32 +10,32 @@ namespace AccessData.Migrations
                 name: "HistoriasClinicas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    HistoriaClinicaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MascotaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HistoriasClinicas", x => x.Id);
+                    table.PrimaryKey("PK_HistoriasClinicas", x => x.HistoriaClinicaId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Registros",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    RegistroId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Analisis = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HistoriaClinicaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Registros", x => x.Id);
+                    table.PrimaryKey("PK_Registros", x => x.RegistroId);
                     table.ForeignKey(
                         name: "FK_Registros_HistoriasClinicas_HistoriaClinicaId",
                         column: x => x.HistoriaClinicaId,
                         principalTable: "HistoriasClinicas",
-                        principalColumn: "Id",
+                        principalColumn: "HistoriaClinicaId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

@@ -1,10 +1,6 @@
 ﻿using Application.Services;
-using Microsoft.AspNetCore.Http;
+using Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Clinic_Story_API.Controllers
 {
@@ -19,6 +15,18 @@ namespace Clinic_Story_API.Controllers
             _service = service;
         }
 
+        [HttpGet("{MascotaId}")]
+        public IActionResult GetById(int MascotaId)
+        {
+            return new JsonResult(_service.GetHistoriaClinicaByMascotaId(MascotaId)) { StatusCode = 200 };
+        }
 
+        [HttpPost]
+        public IActionResult Post(HistoriaClinicaDTO HistoriaClinica)
+        {
+            return new JsonResult(_service.CreateHistoriaClinica(HistoriaClinica));
+
+
+        }
     }
 }
