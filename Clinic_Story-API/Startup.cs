@@ -51,7 +51,7 @@ namespace PetsLife
             services.AddTransient<IGenericRepository, GenericRepository>();
             services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
             services.AddTransient<IHistoriaClinicaService, HistoriaClinicaService>();
-            services.AddTransient<IRegistroService, RegistroService>();        
+            services.AddTransient<IRegistroService, RegistroService>();
             //Added CORS
             services.AddCors(c =>
             {

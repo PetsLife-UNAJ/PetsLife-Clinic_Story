@@ -2,14 +2,14 @@
 using Domain.ICommands;
 using Domain.IQueries;
 using Domain.Models;
-using System;
+using System.Collections.Generic;
 
 namespace Application.Services
 {
     public interface IHistoriaClinicaService
     {
-        HistoriaClinica CreateHistoriaClinica(HistoriaClinicaDTO id);
-        HistoriaClinica GetHistoriaClinicaByMascotaId(int mascotaId);
+        ResponseHistoriaClinica CreateHistoriaClinica(HistoriaClinicaDTO id);
+        List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId);
     }
 
     public class HistoriaClinicaService : IHistoriaClinicaService
@@ -23,15 +23,27 @@ namespace Application.Services
             _query = query;
         }
 
-        public HistoriaClinica CreateHistoriaClinica(HistoriaClinicaDTO id)
+        public ResponseHistoriaClinica CreateHistoriaClinica(HistoriaClinicaDTO historiaclinica)
         {
 
-            throw new NotImplementedException();
+            HistoriaClinica hc = new HistoriaClinica
+            {
+                MascotaId = historiaclinica.MascotaId
+            };
+
+            _repository.Add<HistoriaClinica>(hc);
+
+            return new ResponseHistoriaClinica
+            {
+                Id = hc.HistoriaClinicaId,
+                MascotaId = hc.MascotaId
+            };
         }
 
-        public HistoriaClinica GetHistoriaClinicaByMascotaId(int mascotaId)
+
+        public List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId)
         {
-            throw new NotImplementedException();
+            return _query.GetHistoriaClinicaByMascotaId(mascotaId);
         }
     }
 }

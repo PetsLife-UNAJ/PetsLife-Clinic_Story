@@ -1,9 +1,10 @@
-﻿using Domain.Models;
+﻿using Domain.DTOs;
+using System.Collections.Generic;
 
 namespace Domain.IQueries
 {
     public interface IHistoriaClinicaQueries
     {
-        HistoriaClinica GetHistoriaClinicaByMascotaId(int mascotaId);
+        List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId);
     }
 }

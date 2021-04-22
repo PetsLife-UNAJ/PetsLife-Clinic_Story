@@ -1,8 +1,10 @@
-﻿using Domain.IQueries;
-using Domain.Models;
+﻿using Domain.DTOs;
+using Domain.IQueries;
 using SqlKata.Compilers;
-using System;
+using SqlKata.Execution;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace AccessData.Queries
 {
@@ -17,9 +19,17 @@ namespace AccessData.Queries
             this.sqlKataCompiler = sqlKataCompiler;
         }
 
-        public HistoriaClinica GetHistoriaClinicaByMascotaId(int mascotaId)
+        public List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId)
         {
-            throw new NotImplementedException();
+            var db = new QueryFactory(connection, sqlKataCompiler);
+            var query = db.Query("HistoriasClinicas").
+                Join("Registros", "HistoriasClinicas.HistoriaClinicaId", "Registros.HistoriaClinicaId", "=").
+                Where("MascotaId", "=", mascotaId);
+
+
+            var result = query.Get<HistoriaClinica_RegistrosDTO>();
+
+            return result.ToList();
         }
     }
 }

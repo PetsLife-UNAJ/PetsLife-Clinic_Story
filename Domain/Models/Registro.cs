@@ -4,7 +4,7 @@ namespace Domain.Models
 {
     public class Registro
     {
-        [Required] public int Id { get; set; }
+        [Required] public int RegistroId { get; set; }
         [Required] public string Analisis { get; set; }
 
         //Foreign Key
