@@ -19,6 +19,7 @@ namespace PetsLife
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
