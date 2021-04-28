@@ -1,6 +1,5 @@
-﻿using Domain.DTOs;
-using Domain.ICommands;
-using Domain.IQueries;
+﻿using AccessData.Commands;
+using Domain.DTOs;
 using Domain.Models;
 using System.Collections.Generic;
 

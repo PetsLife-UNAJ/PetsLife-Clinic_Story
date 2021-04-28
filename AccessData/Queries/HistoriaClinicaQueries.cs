@@ -1,5 +1,5 @@
-﻿using Domain.DTOs;
-using Domain.IQueries;
+﻿using AccessData.Commands;
+using Domain.DTOs;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using System.Collections.Generic;

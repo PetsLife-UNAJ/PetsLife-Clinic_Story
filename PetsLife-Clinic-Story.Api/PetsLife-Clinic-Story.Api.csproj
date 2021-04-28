@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Clinic_Story_API</RootNamespace>
+    <RootNamespace>PetsLife_Clinic_Story.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

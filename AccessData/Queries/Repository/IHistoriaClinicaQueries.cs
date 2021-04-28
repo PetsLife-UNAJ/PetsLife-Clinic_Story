@@ -1,7 +1,7 @@
 ﻿using Domain.DTOs;
 using System.Collections.Generic;
 
-namespace Domain.IQueries
+namespace AccessData.Commands
 {
     public interface IHistoriaClinicaQueries
     {

@@ -1,5 +1,5 @@
-﻿using Domain.DTOs;
-using Domain.ICommands;
+﻿using AccessData.Commands;
+using Domain.DTOs;
 using Domain.Models;
 
 namespace Application.Services
