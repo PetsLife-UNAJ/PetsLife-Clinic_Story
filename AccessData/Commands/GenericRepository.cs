@@ -1,14 +1,13 @@
-﻿using Domain.ICommands;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace AccessData.Commands
 {
     public class GenericRepository : IGenericRepository
     {
-        private readonly TemplateDbContext _context;
+        private readonly ApplicationDbContext _context;
 
 
-        public GenericRepository(TemplateDbContext templateDbContext)
+        public GenericRepository(ApplicationDbContext templateDbContext)
         {
             _context = templateDbContext;
         }

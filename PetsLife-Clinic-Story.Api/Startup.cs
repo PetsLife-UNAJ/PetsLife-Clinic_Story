@@ -2,8 +2,6 @@ using AccessData;
 using AccessData.Commands;
 using AccessData.Queries;
 using Application.Services;
-using Domain.ICommands;
-using Domain.IQueries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +34,7 @@ namespace PetsLife
 
 
             var connectionString = Configuration.GetSection("ConnectionString").Value;
-            services.AddDbContext<TemplateDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
 
             // SqlKata
@@ -62,7 +60,7 @@ namespace PetsLife
 
             //Agregar ConnectionString en appsettings.json
             var ConnectionString = Configuration.GetSection("ConnectionString").Value;
-            services.AddDbContext<TemplateDbContext>(options => options.UseSqlServer(ConnectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(ConnectionString));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

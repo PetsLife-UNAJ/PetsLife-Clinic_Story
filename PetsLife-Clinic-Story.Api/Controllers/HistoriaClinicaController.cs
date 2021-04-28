@@ -25,8 +25,6 @@ namespace Clinic_Story_API.Controllers
         public IActionResult Post(HistoriaClinicaDTO HistoriaClinica)
         {
             return new JsonResult(_service.CreateHistoriaClinica(HistoriaClinica));
-
-
         }
     }
 }

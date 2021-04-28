@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AccessData
 {
-    public class TemplateDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public TemplateDbContext(DbContextOptions<TemplateDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         //AÑADIR DBSETs
         public DbSet<HistoriaClinica> HistoriasClinicas { get; set; }

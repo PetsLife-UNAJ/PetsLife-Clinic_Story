@@ -1,4 +1,4 @@
-﻿namespace Domain.ICommands
+﻿namespace AccessData.Commands
 {
     public interface IGenericRepository
     {
