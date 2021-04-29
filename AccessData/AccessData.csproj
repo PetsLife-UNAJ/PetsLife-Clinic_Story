@@ -19,8 +19,4 @@
     <PackageReference Include="SqlKata.Execution" Version="2.3.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
-
 </Project>
