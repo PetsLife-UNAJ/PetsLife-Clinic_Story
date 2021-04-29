@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
+using System;
 
 namespace Domain.Models
 {
@@ -15,16 +12,10 @@ namespace Domain.Models
 
         //Fks
         public int MascotaId { get; set; }
-        public int VeterinarioId { get; set; }
-        
+        public Mascota Mascota { get; set; }
+
         public int CalendarioTurnoId { get; set; }
         public CalendarioTurno CalendarioTurno { get; set; }
-
-        //public int VeterinarioId { get; set; }
-        //public Veterinario Veterinario { get; set; }
-
-
-
 
     }
 }

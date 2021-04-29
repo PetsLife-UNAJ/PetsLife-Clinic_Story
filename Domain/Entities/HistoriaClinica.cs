@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using Domain.Entities;
+using System.Collections.Generic;
 
 namespace Domain.Models
 {
     public class HistoriaClinica
     {
-        [Required] public int HistoriaClinicaId { get; set; }
-        [Required] public int MascotaId { get; set; }
+        public int HistoriaClinicaId { get; set; }
 
+        //Fks
         public List<Registro> Registros { get; set; }
-
+        public int MascotaId { get; set; }
+        public Mascota Mascota { get; set; }
     }
 }
