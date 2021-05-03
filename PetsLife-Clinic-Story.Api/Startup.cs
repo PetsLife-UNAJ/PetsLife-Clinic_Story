@@ -1,6 +1,7 @@
 using AccessData;
 using AccessData.Commands;
 using AccessData.Queries;
+using AccessData.Queries.Repository;
 using Application.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,6 +51,9 @@ namespace PetsLife
             services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
             services.AddTransient<IHistoriaClinicaService, HistoriaClinicaService>();
             services.AddTransient<IRegistroService, RegistroService>();
+            services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IClienteQueries, ClienteQueries>();
+
             //Added CORS
             services.AddCors(c =>
             {
