@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace AccessData.Migrations
 {
-    public partial class hc : Migration
+    public partial class hhccDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,13 +13,12 @@ namespace AccessData.Migrations
                 {
                     ClienteId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Clave = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Dni = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Dni = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    Direccion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,9 +31,9 @@ namespace AccessData.Migrations
                 {
                     VeterinariaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Direccion = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,9 +46,9 @@ namespace AccessData.Migrations
                 {
                     MascotaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Edad = table.Column<int>(type: "int", nullable: false),
-                    Peso = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Edad = table.Column<int>(type: "int", maxLength: 2, nullable: false),
+                    Peso = table.Column<int>(type: "int", maxLength: 3, nullable: false),
                     ClienteId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -69,7 +68,7 @@ namespace AccessData.Migrations
                 {
                     ConsultorioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Numero = table.Column<int>(type: "int", nullable: false),
+                    Numero = table.Column<int>(type: "int", maxLength: 2, nullable: false),
                     VeterinariaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -108,15 +107,15 @@ namespace AccessData.Migrations
                 {
                     VeterinarioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Dni = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Dni = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Sexo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Domicilio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Matricula = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Sexo = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Domicilio = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Matricula = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     ConsultorioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -136,7 +135,7 @@ namespace AccessData.Migrations
                 {
                     RegistroId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Analisis = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Analisis = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     HistoriaClinicaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -156,7 +155,7 @@ namespace AccessData.Migrations
                 {
                     CalendarioTurnoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Dia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Dia = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Horafin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     VeterinarioId = table.Column<int>(type: "int", nullable: false)
@@ -201,15 +200,45 @@ namespace AccessData.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Cliente",
+                columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
+                values: new object[] { 1, "Bravo", "Calle 9 N2946", "39876453", "bravo.jose.luis18@gmail.com", "Jose", "1136756432" });
+
+            migrationBuilder.InsertData(
+                table: "Cliente",
+                columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
+                values: new object[] { 2, "Damico", "Moreno 322", "12383764", "claudio.damico@gmail.com", "Claudio", "1123455877" });
+
+            migrationBuilder.InsertData(
+                table: "Cliente",
+                columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
+                values: new object[] { 3, "Nuzzo", "Lavelle 987", "39987666", "julian.nuzzo@gmail.com", "Julian", "1123982376" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CalendarioTurno_VeterinarioId",
                 table: "CalendarioTurno",
                 column: "VeterinarioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cliente_ClienteId",
+                table: "Cliente",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Consultorio_ConsultorioId",
+                table: "Consultorio",
+                column: "ConsultorioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Consultorio_VeterinariaId",
                 table: "Consultorio",
                 column: "VeterinariaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HistoriasClinicas_HistoriaClinicaId",
+                table: "HistoriasClinicas",
+                column: "HistoriaClinicaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HistoriasClinicas_MascotaId",
@@ -223,9 +252,19 @@ namespace AccessData.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Mascota_MascotaId",
+                table: "Mascota",
+                column: "MascotaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Registros_HistoriaClinicaId",
                 table: "Registros",
                 column: "HistoriaClinicaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Registros_RegistroId",
+                table: "Registros",
+                column: "RegistroId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Turno_CalendarioTurnoId",
@@ -239,10 +278,25 @@ namespace AccessData.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Turno_TurnoId",
+                table: "Turno",
+                column: "TurnoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Veterinaria_VeterinariaId",
+                table: "Veterinaria",
+                column: "VeterinariaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Veterinario_ConsultorioId",
                 table: "Veterinario",
                 column: "ConsultorioId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Veterinario_VeterinarioId",
+                table: "Veterinario",
+                column: "VeterinarioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

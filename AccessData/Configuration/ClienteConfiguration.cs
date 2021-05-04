@@ -20,10 +20,9 @@ namespace AccessData.Configuration
 
             var cliente = new List<Cliente>();
 
-            cliente.Add(new Cliente { Nombre = "Jose", Apellido = "Bravo", Email = "bravo.jose.luis18@gmail.com", Dni = "39876453", Direccion = "Calle 9 N2946", Telefono ="1136756432" });
-            cliente.Add(new Cliente { Nombre = "Claudio", Apellido = "Damico", Email = "claudio.damico@gmail.com", Dni = "12383764", Direccion = "Moreno 322", Telefono = "1123455877" });
-            cliente.Add(new Cliente { Nombre = "Julian", Apellido = "Nuzzo", Email = "julian.nuzzo@gmail.com", Dni = "39987666", Direccion = "Lavelle 987", Telefono = "1123982376" });
-
+            cliente.Add(new Cliente { ClienteId = 1, Nombre = "Jose", Apellido = "Bravo", Email = "bravo.jose.luis18@gmail.com", Dni = "39876453", Direccion = "Calle 9 N2946", Telefono = "1136756432" });
+            cliente.Add(new Cliente { ClienteId = 2, Nombre = "Claudio", Apellido = "Damico", Email = "claudio.damico@gmail.com", Dni = "12383764", Direccion = "Moreno 322", Telefono = "1123455877" });
+            cliente.Add(new Cliente { ClienteId = 3, Nombre = "Julian", Apellido = "Nuzzo", Email = "julian.nuzzo@gmail.com", Dni = "39987666", Direccion = "Lavelle 987", Telefono = "1123982376" });
 
             entityBuilder.HasData(cliente);
         }

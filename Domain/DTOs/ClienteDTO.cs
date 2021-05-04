@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Domain.DTOs
+﻿namespace Domain.DTOs
 {
     public class ClienteDTO
     {

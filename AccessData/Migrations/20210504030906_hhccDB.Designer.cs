@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210429005726_hc")]
-    partial class hc
+    [Migration("20210504030906_hhccDB")]
+    partial class hhccDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,29 +29,72 @@ namespace AccessData.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Clave")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Dni")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("ClienteId");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("Cliente");
+
+                    b.HasData(
+                        new
+                        {
+                            ClienteId = 1,
+                            Apellido = "Bravo",
+                            Direccion = "Calle 9 N2946",
+                            Dni = "39876453",
+                            Email = "bravo.jose.luis18@gmail.com",
+                            Nombre = "Jose",
+                            Telefono = "1136756432"
+                        },
+                        new
+                        {
+                            ClienteId = 2,
+                            Apellido = "Damico",
+                            Direccion = "Moreno 322",
+                            Dni = "12383764",
+                            Email = "claudio.damico@gmail.com",
+                            Nombre = "Claudio",
+                            Telefono = "1123455877"
+                        },
+                        new
+                        {
+                            ClienteId = 3,
+                            Apellido = "Nuzzo",
+                            Direccion = "Lavelle 987",
+                            Dni = "39987666",
+                            Email = "julian.nuzzo@gmail.com",
+                            Nombre = "Julian",
+                            Telefono = "1123982376"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Mascota", b =>
@@ -65,17 +108,23 @@ namespace AccessData.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Edad")
+                        .HasMaxLength(2)
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Peso")
+                        .HasMaxLength(3)
                         .HasColumnType("int");
 
                     b.HasKey("MascotaId");
 
                     b.HasIndex("ClienteId");
+
+                    b.HasIndex("MascotaId");
 
                     b.ToTable("Mascota");
                 });
@@ -88,39 +137,57 @@ namespace AccessData.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("ConsultorioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Dni")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("Domicilio")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Matricula")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Sexo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("VeterinarioId");
 
                     b.HasIndex("ConsultorioId")
                         .IsUnique();
+
+                    b.HasIndex("VeterinarioId");
 
                     b.ToTable("Veterinario");
                 });
@@ -133,6 +200,7 @@ namespace AccessData.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Dia")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("HoraInicio")
@@ -159,12 +227,15 @@ namespace AccessData.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Numero")
+                        .HasMaxLength(2)
                         .HasColumnType("int");
 
                     b.Property<int>("VeterinariaId")
                         .HasColumnType("int");
 
                     b.HasKey("ConsultorioId");
+
+                    b.HasIndex("ConsultorioId");
 
                     b.HasIndex("VeterinariaId");
 
@@ -183,6 +254,8 @@ namespace AccessData.Migrations
 
                     b.HasKey("HistoriaClinicaId");
 
+                    b.HasIndex("HistoriaClinicaId");
+
                     b.HasIndex("MascotaId")
                         .IsUnique();
 
@@ -197,7 +270,9 @@ namespace AccessData.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Analisis")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
@@ -205,6 +280,8 @@ namespace AccessData.Migrations
                     b.HasKey("RegistroId");
 
                     b.HasIndex("HistoriaClinicaId");
+
+                    b.HasIndex("RegistroId");
 
                     b.ToTable("Registros");
                 });
@@ -238,6 +315,8 @@ namespace AccessData.Migrations
                     b.HasIndex("MascotaId")
                         .IsUnique();
 
+                    b.HasIndex("TurnoId");
+
                     b.ToTable("Turno");
                 });
 
@@ -249,15 +328,23 @@ namespace AccessData.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("VeterinariaId");
+
+                    b.HasIndex("VeterinariaId");
 
                     b.ToTable("Veterinaria");
                 });

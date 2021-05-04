@@ -22,13 +22,13 @@ namespace AccessData.Queries
         public List<GetClienteDTO> GetAll()
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var cliente = db.Query("Cliente").Select("ClienteId","Nombre", "Apellido", "Email", "Dni", "Direccion", "Telefono").Get<GetClienteDTO>().ToList();
-           
+            var cliente = db.Query("Cliente").Select("ClienteId", "Nombre", "Apellido", "Email", "Dni", "Direccion", "Telefono").Get<GetClienteDTO>().ToList();
+
             foreach (var item in cliente)
             {
                 item.Mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso").Where("ClienteId", "=", item.ClienteId).Get<MascotaDTO>().ToList();
             }
-            
+
             return new List<GetClienteDTO>(cliente);
         }
 
@@ -41,6 +41,7 @@ namespace AccessData.Queries
 
             return new GetClienteDTO
             {
+                ClienteId = id,
                 Nombre = cliente.Nombre,
                 Apellido = cliente.Apellido,
                 Email = cliente.Email,

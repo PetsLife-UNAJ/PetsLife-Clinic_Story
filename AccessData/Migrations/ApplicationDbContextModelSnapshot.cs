@@ -61,6 +61,38 @@ namespace AccessData.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("Cliente");
+
+                    b.HasData(
+                        new
+                        {
+                            ClienteId = 1,
+                            Apellido = "Bravo",
+                            Direccion = "Calle 9 N2946",
+                            Dni = "39876453",
+                            Email = "bravo.jose.luis18@gmail.com",
+                            Nombre = "Jose",
+                            Telefono = "1136756432"
+                        },
+                        new
+                        {
+                            ClienteId = 2,
+                            Apellido = "Damico",
+                            Direccion = "Moreno 322",
+                            Dni = "12383764",
+                            Email = "claudio.damico@gmail.com",
+                            Nombre = "Claudio",
+                            Telefono = "1123455877"
+                        },
+                        new
+                        {
+                            ClienteId = 3,
+                            Apellido = "Nuzzo",
+                            Direccion = "Lavelle 987",
+                            Dni = "39987666",
+                            Email = "julian.nuzzo@gmail.com",
+                            Nombre = "Julian",
+                            Telefono = "1123982376"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Mascota", b =>
