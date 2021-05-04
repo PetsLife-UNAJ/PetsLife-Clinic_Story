@@ -26,7 +26,7 @@ namespace AccessData.Queries
 
             foreach (var item in cliente)
             {
-                item.Mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso").Where("ClienteId", "=", item.ClienteId).Get<MascotaDTO>().ToList();
+                item.Mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso", "MascotaId", "ClienteId").Where("ClienteId", "=", item.ClienteId).Get<ResponseMascota>().ToList();
             }
 
             return new List<GetClienteDTO>(cliente);
@@ -36,8 +36,8 @@ namespace AccessData.Queries
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
             var cliente = db.Query("Cliente").Where("ClienteId", "=", id).FirstOrDefault<ClienteDTO>(); ;
-            var mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso")
-                .Where("ClienteId", "=", id).Get<MascotaDTO>().ToList();
+            var mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso", "MascotaId", "ClienteId")
+                .Where("ClienteId", "=", id).Get<ResponseMascota>().ToList();
 
             return new GetClienteDTO
             {

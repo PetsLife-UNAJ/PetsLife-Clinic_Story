@@ -11,6 +11,6 @@ namespace Domain.DTOs
         public string Dni { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-        public List<MascotaDTO> Mascotas { get; set; }
+        public List<ResponseMascota> Mascotas { get; set; }
     }
 }

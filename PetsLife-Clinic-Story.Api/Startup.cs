@@ -33,10 +33,8 @@ namespace PetsLife
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PetsLife", Version = "v1" });
             });
 
-
             var connectionString = Configuration.GetSection("ConnectionString").Value;
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-
 
             // SqlKata
             services.AddTransient<Compiler, SqlServerCompiler>();
@@ -45,7 +43,6 @@ namespace PetsLife
                 return new SqlConnection(connectionString);
             });
 
-
             //Injection dependences
             services.AddTransient<IGenericRepository, GenericRepository>();
             services.AddTransient<IHistoriaClinicaQueries, HistoriaClinicaQueries>();
@@ -53,14 +50,13 @@ namespace PetsLife
             services.AddTransient<IRegistroService, RegistroService>();
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IClienteQueries, ClienteQueries>();
-
+            services.AddTransient<IMascotaQueries, MascotaQueries>();
+            services.AddTransient<IMascotaService, MascotaService>();
             //Added CORS
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
-
-
 
             //Agregar ConnectionString en appsettings.json
             var ConnectionString = Configuration.GetSection("ConnectionString").Value;
