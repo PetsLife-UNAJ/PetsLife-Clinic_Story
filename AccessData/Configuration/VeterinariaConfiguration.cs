@@ -11,6 +11,10 @@ namespace AccessData.Configuration
             entityBuilder.Property(x => x.Nombre).IsRequired().HasMaxLength(20);
             entityBuilder.Property(x => x.Direccion).IsRequired().HasMaxLength(20);
             entityBuilder.Property(x => x.Telefono).IsRequired().HasMaxLength(20);
+
+            var veterinaria = new Veterinaria { VeterinariaId = 1, Nombre = "Pet's Life", Direccion = "Av. San martin 382", Telefono = "4256-2351" };
+
+            entityBuilder.HasData(veterinaria);
         }
     }
 }

@@ -2,14 +2,13 @@
 using AccessData.Queries.Repository;
 using Domain.DTOs;
 using Domain.Entities;
-using System;
 
 namespace Application.Services
 {
     public interface IMascotaService
     {
         public ResponseMascota Create(MascotaDTO mascotaDto);
-        public GetClienteDTO GetMascotasByClienteId(int clienteId);
+        public ResponseMascota GetMascotaById(int id);
     }
 
     public class MascotaService : IMascotaService
@@ -44,13 +43,9 @@ namespace Application.Services
             };
         }
 
-        //public List<Mascota> GetAll()
-        //{ }
-
-        public GetClienteDTO GetMascotasByClienteId(int clienteId)
+        public ResponseMascota GetMascotaById(int id)
         {
-            //return _query.GetById(id);
-            throw new Exception();
+            return _query.GetMascotaById(id);
         }
     }
 }

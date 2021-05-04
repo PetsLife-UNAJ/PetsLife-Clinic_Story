@@ -1,5 +1,7 @@
 ﻿using AccessData.Queries.Repository;
+using Domain.DTOs;
 using SqlKata.Compilers;
+using SqlKata.Execution;
 using System.Data;
 
 namespace AccessData.Queries
@@ -13,6 +15,15 @@ namespace AccessData.Queries
         {
             this.connection = connection;
             this.sqlKataCompiler = sqlKataCompiler;
+        }
+
+        public ResponseMascota GetMascotaById(int Id)
+        {
+            var db = new QueryFactory(connection, sqlKataCompiler);
+            var query = db.Query("Mascota")
+                .Where("Mascota.MascotaId", "=", Id).FirstOrDefault<ResponseMascota>();
+
+            return query;
         }
     }
 }

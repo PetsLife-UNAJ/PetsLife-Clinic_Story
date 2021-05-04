@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210504030906_hhccDB")]
+    [Migration("20210504055715_hhccDB")]
     partial class hhccDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,8 +159,9 @@ namespace AccessData.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("FechaNacimiento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("FechaNacimiento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Matricula")
                         .IsRequired()
@@ -190,6 +191,36 @@ namespace AccessData.Migrations
                     b.HasIndex("VeterinarioId");
 
                     b.ToTable("Veterinario");
+
+                    b.HasData(
+                        new
+                        {
+                            VeterinarioId = 1,
+                            Apellido = "Diaz",
+                            ConsultorioId = 1,
+                            Dni = "42132121",
+                            Domicilio = "Calle 21 231",
+                            Email = "juandiaz@gmail.com",
+                            FechaNacimiento = "14-9-1990",
+                            Matricula = "ADS213",
+                            Nombre = "Juan",
+                            Sexo = "m",
+                            Telefono = "42113212"
+                        },
+                        new
+                        {
+                            VeterinarioId = 2,
+                            Apellido = "Perez",
+                            ConsultorioId = 2,
+                            Dni = "321321321",
+                            Domicilio = "Calle 132 7654",
+                            Email = "juandiaz@gmail.com",
+                            FechaNacimiento = "24-3-1958",
+                            Matricula = "XSD213",
+                            Nombre = "Martina",
+                            Sexo = "f",
+                            Telefono = "4232136"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.CalendarioTurno", b =>
@@ -240,6 +271,38 @@ namespace AccessData.Migrations
                     b.HasIndex("VeterinariaId");
 
                     b.ToTable("Consultorio");
+
+                    b.HasData(
+                        new
+                        {
+                            ConsultorioId = 1,
+                            Numero = 100,
+                            VeterinariaId = 1
+                        },
+                        new
+                        {
+                            ConsultorioId = 2,
+                            Numero = 101,
+                            VeterinariaId = 1
+                        },
+                        new
+                        {
+                            ConsultorioId = 3,
+                            Numero = 200,
+                            VeterinariaId = 1
+                        },
+                        new
+                        {
+                            ConsultorioId = 4,
+                            Numero = 201,
+                            VeterinariaId = 1
+                        },
+                        new
+                        {
+                            ConsultorioId = 5,
+                            Numero = 202,
+                            VeterinariaId = 1
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.HistoriaClinica", b =>
@@ -273,6 +336,9 @@ namespace AccessData.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
@@ -347,6 +413,15 @@ namespace AccessData.Migrations
                     b.HasIndex("VeterinariaId");
 
                     b.ToTable("Veterinaria");
+
+                    b.HasData(
+                        new
+                        {
+                            VeterinariaId = 1,
+                            Direccion = "Av. San martin 382",
+                            Nombre = "Pet's Life",
+                            Telefono = "4256-2351"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Mascota", b =>

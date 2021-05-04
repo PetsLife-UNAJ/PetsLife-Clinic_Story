@@ -1,12 +1,9 @@
-﻿using Domain.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
-namespace Domain.Entities
+namespace Domain.DTOs
 {
-    public class Veterinario
+    public class VeterinarioDTO
     {
-        public int VeterinarioId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Dni { get; set; }
@@ -17,11 +14,6 @@ namespace Domain.Entities
         public string Telefono { get; set; }
         public string Matricula { get; set; }
 
-        //fk
-        public Consultorio Consultorio { get; set; }
-
         public int ConsultorioId { get; set; }
-
-        public List<CalendarioTurno> CalendarioTurnos { get; set; }
     }
 }

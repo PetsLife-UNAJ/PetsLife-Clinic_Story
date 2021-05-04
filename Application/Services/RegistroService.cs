@@ -1,6 +1,7 @@
 ﻿using AccessData.Commands;
 using Domain.DTOs;
 using Domain.Models;
+using System;
 
 namespace Application.Services
 {
@@ -23,7 +24,8 @@ namespace Application.Services
             Registro entity = new Registro
             {
                 HistoriaClinicaId = registro.HistoriaClinicaId,
-                Analisis = registro.Analisis
+                Analisis = registro.Analisis,
+                FechaCreacion = DateTime.Now
             };
 
             _repository.Add<Registro>(entity);
@@ -35,7 +37,5 @@ namespace Application.Services
                 HistoriaClinicaId = entity.HistoriaClinicaId
             };
         }
-
-
     }
 }

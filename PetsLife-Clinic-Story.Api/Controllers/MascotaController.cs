@@ -28,5 +28,27 @@ namespace PetsLife_Clinic_Story.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                var mascota = _mascotaService.GetMascotaById(id);
+
+                if (mascota != null)
+                {
+                    return new JsonResult(_mascotaService.GetMascotaById(id)) { StatusCode = 200 };
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

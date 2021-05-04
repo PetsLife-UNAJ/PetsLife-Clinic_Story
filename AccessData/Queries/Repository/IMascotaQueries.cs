@@ -1,7 +1,9 @@
-﻿namespace AccessData.Queries.Repository
+﻿using Domain.DTOs;
+
+namespace AccessData.Queries.Repository
 {
     public interface IMascotaQueries
     {
-        //public GetClienteDTO GetMascotasByClienteId(int clienteId);
+        public ResponseMascota GetMascotaById(int Id);
     }
 }

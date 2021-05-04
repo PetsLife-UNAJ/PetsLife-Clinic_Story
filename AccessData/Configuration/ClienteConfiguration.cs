@@ -16,8 +16,6 @@ namespace AccessData.Configuration
             entityBuilder.Property(x => x.Direccion).IsRequired().HasMaxLength(50);
             entityBuilder.Property(x => x.Telefono).IsRequired().HasMaxLength(12);
 
-            // FormaEntrega by Default
-
             var cliente = new List<Cliente>();
 
             cliente.Add(new Cliente { ClienteId = 1, Nombre = "Jose", Apellido = "Bravo", Email = "bravo.jose.luis18@gmail.com", Dni = "39876453", Direccion = "Calle 9 N2946", Telefono = "1136756432" });

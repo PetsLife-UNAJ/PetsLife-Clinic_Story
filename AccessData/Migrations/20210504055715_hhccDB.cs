@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccessData.Migrations
 {
@@ -110,7 +110,7 @@ namespace AccessData.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Apellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Dni = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaNacimiento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sexo = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Domicilio = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -136,6 +136,7 @@ namespace AccessData.Migrations
                     RegistroId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Analisis = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HistoriaClinicaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -203,17 +204,39 @@ namespace AccessData.Migrations
             migrationBuilder.InsertData(
                 table: "Cliente",
                 columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
-                values: new object[] { 1, "Bravo", "Calle 9 N2946", "39876453", "bravo.jose.luis18@gmail.com", "Jose", "1136756432" });
+                values: new object[,]
+                {
+                    { 1, "Bravo", "Calle 9 N2946", "39876453", "bravo.jose.luis18@gmail.com", "Jose", "1136756432" },
+                    { 2, "Damico", "Moreno 322", "12383764", "claudio.damico@gmail.com", "Claudio", "1123455877" },
+                    { 3, "Nuzzo", "Lavelle 987", "39987666", "julian.nuzzo@gmail.com", "Julian", "1123982376" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Cliente",
-                columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
-                values: new object[] { 2, "Damico", "Moreno 322", "12383764", "claudio.damico@gmail.com", "Claudio", "1123455877" });
+                table: "Veterinaria",
+                columns: new[] { "VeterinariaId", "Direccion", "Nombre", "Telefono" },
+                values: new object[] { 1, "Av. San martin 382", "Pet's Life", "4256-2351" });
 
             migrationBuilder.InsertData(
-                table: "Cliente",
-                columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
-                values: new object[] { 3, "Nuzzo", "Lavelle 987", "39987666", "julian.nuzzo@gmail.com", "Julian", "1123982376" });
+                table: "Consultorio",
+                columns: new[] { "ConsultorioId", "Numero", "VeterinariaId" },
+                values: new object[,]
+                {
+                    { 1, 100, 1 },
+                    { 2, 101, 1 },
+                    { 3, 200, 1 },
+                    { 4, 201, 1 },
+                    { 5, 202, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Veterinario",
+                columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
+                values: new object[] { 1, "Diaz", 1, "42132121", "Calle 21 231", "juandiaz@gmail.com", "14-9-1990", "ADS213", "Juan", "m", "42113212" });
+
+            migrationBuilder.InsertData(
+                table: "Veterinario",
+                columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
+                values: new object[] { 2, "Perez", 2, "321321321", "Calle 132 7654", "juandiaz@gmail.com", "24-3-1958", "XSD213", "Martina", "f", "4232136" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CalendarioTurno_VeterinarioId",
