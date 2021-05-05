@@ -54,6 +54,10 @@ namespace PetsLife
             services.AddTransient<IMascotaQueries, MascotaQueries>();
             services.AddTransient<IMascotaService, MascotaService>();
             services.AddTransient<IVeterinarioService, VeterinarioService>();
+            services.AddTransient<ITurnoService, TurnoService>();
+            services.AddTransient<ITurnoQueries, TurnoQueries>();
+
+
 
             //Added CORS
             services.AddCors(c =>
