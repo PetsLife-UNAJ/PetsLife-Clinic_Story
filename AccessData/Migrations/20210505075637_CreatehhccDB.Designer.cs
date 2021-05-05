@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210504055715_hhccDB")]
-    partial class hhccDB
+    [Migration("20210505075637_CreatehhccDB")]
+    partial class CreatehhccDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

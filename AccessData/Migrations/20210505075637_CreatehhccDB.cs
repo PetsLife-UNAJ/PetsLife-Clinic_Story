@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccessData.Migrations
 {
-    public partial class hhccDB : Migration
+    public partial class CreatehhccDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
