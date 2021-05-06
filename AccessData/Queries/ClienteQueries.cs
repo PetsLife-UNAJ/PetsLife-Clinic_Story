@@ -50,7 +50,7 @@ namespace AccessData.Queries
                     Nombre = cliente.Nombre,
                     Apellido = cliente.Apellido,
                     Email = cliente.Email,
-                    Dni = cliente.Email,
+                    Dni = cliente.Dni,
                     Direccion = cliente.Direccion,
                     Telefono = cliente.Telefono,
                     Mascotas = mascotas
