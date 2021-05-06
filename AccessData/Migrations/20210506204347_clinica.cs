@@ -173,6 +173,26 @@ namespace AccessData.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tratamiento",
+                columns: table => new
+                {
+                    TratamientoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RegistroId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tratamiento", x => x.TratamientoId);
+                    table.ForeignKey(
+                        name: "FK_Tratamiento_Registros_RegistroId",
+                        column: x => x.RegistroId,
+                        principalTable: "Registros",
+                        principalColumn: "RegistroId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Turno",
                 columns: table => new
                 {
@@ -290,6 +310,12 @@ namespace AccessData.Migrations
                 column: "RegistroId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tratamiento_RegistroId",
+                table: "Tratamiento",
+                column: "RegistroId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Turno_CalendarioTurnoId",
                 table: "Turno",
                 column: "CalendarioTurnoId");
@@ -325,28 +351,31 @@ namespace AccessData.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Registros");
+                name: "Tratamiento");
 
             migrationBuilder.DropTable(
                 name: "Turno");
 
             migrationBuilder.DropTable(
-                name: "HistoriasClinicas");
+                name: "Registros");
 
             migrationBuilder.DropTable(
                 name: "CalendarioTurno");
 
             migrationBuilder.DropTable(
-                name: "Mascota");
+                name: "HistoriasClinicas");
 
             migrationBuilder.DropTable(
                 name: "Veterinario");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
+                name: "Mascota");
 
             migrationBuilder.DropTable(
                 name: "Consultorio");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
 
             migrationBuilder.DropTable(
                 name: "Veterinaria");

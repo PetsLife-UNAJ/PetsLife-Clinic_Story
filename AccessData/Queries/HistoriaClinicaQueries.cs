@@ -22,10 +22,11 @@ namespace AccessData.Queries
         public List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var query = db.Query("HistoriasClinicas").
-                Join("Registros", "HistoriasClinicas.HistoriaClinicaId", "Registros.HistoriaClinicaId", "=").
+            var query = db.Query("HistoriasClinicas")
+                .Select("*").Select("Descripcion as Tratamiento").
+                Join("Registros", "HistoriasClinicas.HistoriaClinicaId", "Registros.HistoriaClinicaId", "=")
+                .Join("Tratamiento", "Registros.RegistroId", "Tratamiento.RegistroId").
                 Where("MascotaId", "=", mascotaId);
-
 
             var result = query.Get<HistoriaClinica_RegistrosDTO>();
 

@@ -127,6 +127,27 @@ namespace AccessData.Migrations
                     b.ToTable("Mascota");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Tratamiento", b =>
+                {
+                    b.Property<int>("TratamientoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RegistroId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TratamientoId");
+
+                    b.HasIndex("RegistroId")
+                        .IsUnique();
+
+                    b.ToTable("Tratamiento");
+                });
+
             modelBuilder.Entity("Domain.Entities.Veterinario", b =>
                 {
                     b.Property<int>("VeterinarioId")
@@ -433,6 +454,17 @@ namespace AccessData.Migrations
                     b.Navigation("Cliente");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Tratamiento", b =>
+                {
+                    b.HasOne("Domain.Models.Registro", "Registro")
+                        .WithOne("Tratamiento")
+                        .HasForeignKey("Domain.Entities.Tratamiento", "RegistroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Registro");
+                });
+
             modelBuilder.Entity("Domain.Entities.Veterinario", b =>
                 {
                     b.HasOne("Domain.Models.Consultorio", "Consultorio")
@@ -537,6 +569,11 @@ namespace AccessData.Migrations
             modelBuilder.Entity("Domain.Models.HistoriaClinica", b =>
                 {
                     b.Navigation("Registros");
+                });
+
+            modelBuilder.Entity("Domain.Models.Registro", b =>
+                {
+                    b.Navigation("Tratamiento");
                 });
 
             modelBuilder.Entity("Domain.Models.Veterinaria", b =>

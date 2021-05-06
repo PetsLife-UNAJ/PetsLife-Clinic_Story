@@ -7,7 +7,9 @@ namespace AccessData
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
 
         public DbSet<HistoriaClinica> HistoriasClinicas { get; set; }
         public DbSet<Registro> Registros { get; set; }
@@ -18,6 +20,7 @@ namespace AccessData
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Mascota> Mascota { get; set; }
         public DbSet<Veterinario> Veterinario { get; set; }
+        public DbSet<Tratamiento> Tratamiento { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -26,7 +29,6 @@ namespace AccessData
             // Model Contraints
             ModelConfig(builder);
         }
-
 
         private void ModelConfig(ModelBuilder modelBuilder)
         {

@@ -60,6 +60,7 @@ namespace PetsLife
             services.AddTransient<IVeterinarioService, VeterinarioService>();
             services.AddTransient<ITurnoService, TurnoService>();
             services.AddTransient<ITurnoQueries, TurnoQueries>();
+            services.AddTransient<ITratamientoService, TratamientoService>();
 
             services.AddTransient<IValidator<Cliente>, ClienteValidator>();
             services.AddTransient<IValidator<HistoriaClinica>, HistoriaClinicaValidator>();

@@ -6,6 +6,7 @@ namespace Domain.DTOs
     {
         public int HistoriaClinicaId { get; set; }
         public int RegistroId { get; set; }
+        public string Tratamiento { get; set; }
         public string Analisis { get; set; }
         public int MascotaId { get; set; }
         public DateTime FechaCreacion { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 
 namespace Domain.Models
 {
@@ -12,5 +13,7 @@ namespace Domain.Models
         public HistoriaClinica HistoriaClinica { get; set; }
 
         public int HistoriaClinicaId { get; set; }
+
+        public Tratamiento Tratamiento { get; set; }
     }
 }
