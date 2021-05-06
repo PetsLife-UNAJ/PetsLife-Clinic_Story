@@ -1,6 +1,8 @@
 ﻿using AccessData.Commands;
+using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Models;
+using FluentValidation;
 using System.Collections.Generic;
 
 namespace Application.Services
@@ -29,6 +31,9 @@ namespace Application.Services
             {
                 MascotaId = historiaclinica.MascotaId
             };
+
+            var validator = new HistoriaClinicaValidator();
+            validator.ValidateAndThrow(hc);
 
             _repository.Add<HistoriaClinica>(hc);
 

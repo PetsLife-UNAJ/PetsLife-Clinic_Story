@@ -34,22 +34,32 @@ namespace AccessData.Queries
 
         public GetClienteDTO GetClienteById(int id)
         {
+
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var cliente = db.Query("Cliente").Where("ClienteId", "=", id).FirstOrDefault<ClienteDTO>(); ;
-            var mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso", "MascotaId", "ClienteId")
+            var cliente = db.Query("Cliente").Where("ClienteId", "=", id).FirstOrDefault<ClienteDTO>();
+
+            if (cliente != null)
+            {
+                var mascotas = db.Query("Mascota").Select("Nombre", "Edad", "Peso", "MascotaId", "ClienteId")
                 .Where("ClienteId", "=", id).Get<ResponseMascota>().ToList();
 
-            return new GetClienteDTO
-            {
-                ClienteId = id,
-                Nombre = cliente.Nombre,
-                Apellido = cliente.Apellido,
-                Email = cliente.Email,
-                Dni = cliente.Email,
-                Direccion = cliente.Direccion,
-                Telefono = cliente.Telefono,
-                Mascotas = mascotas
-            };
+
+                return new GetClienteDTO
+                {
+                    ClienteId = id,
+                    Nombre = cliente.Nombre,
+                    Apellido = cliente.Apellido,
+                    Email = cliente.Email,
+                    Dni = cliente.Email,
+                    Direccion = cliente.Direccion,
+                    Telefono = cliente.Telefono,
+                    Mascotas = mascotas
+                };
+            }
+
+            return null;
+
+
         }
     }
 }

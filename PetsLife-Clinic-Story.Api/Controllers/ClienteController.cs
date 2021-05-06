@@ -34,7 +34,11 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         {
             try
             {
-                return new JsonResult(_clienteService.GetClienteById(id)) { StatusCode = 200 };
+                var cliente = _clienteService.GetClienteById(id);
+                if (cliente == null)
+                    return NotFound();
+
+                return new JsonResult(cliente)  { StatusCode = 200 };
             }
             catch (Exception e)
             {

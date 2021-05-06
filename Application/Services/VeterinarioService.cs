@@ -1,6 +1,8 @@
 ﻿using AccessData.Commands;
+using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Entities;
+using FluentValidation;
 using System;
 
 namespace Application.Services
@@ -34,6 +36,9 @@ namespace Application.Services
                 Matricula = veterinarioDTO.Matricula,
                 ConsultorioId = veterinarioDTO.ConsultorioId
             };
+
+            var validator = new VeterinarioValidator();
+            validator.ValidateAndThrow(veterinario);
 
             _repository.Add<Veterinario>(veterinario);
 
