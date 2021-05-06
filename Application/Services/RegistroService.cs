@@ -1,6 +1,8 @@
 ﻿using AccessData.Commands;
+using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Models;
+using FluentValidation;
 using System;
 
 namespace Application.Services
@@ -27,6 +29,9 @@ namespace Application.Services
                 Analisis = registro.Analisis,
                 FechaCreacion = DateTime.Now
             };
+
+            var validator = new RegistroValidator();
+            validator.ValidateAndThrow(entity);
 
             _repository.Add<Registro>(entity);
 

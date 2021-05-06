@@ -1,8 +1,11 @@
 ﻿using AccessData.Commands;
 using AccessData.Queries.Repository;
+using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Entities;
+using FluentValidation;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.Services
 {
@@ -36,9 +39,12 @@ namespace Application.Services
                 Telefono = model.Telefono
             };
 
+            var validator = new ClienteValidator();
+            validator.ValidateAndThrow(entity);
+      
             _repository.Add<Cliente>(entity);
-
             return new GenericCreatedResponseDto { Entity = "Cliente", Id = entity.ClienteId.ToString() };
+           
         }
 
         public List<GetClienteDTO> GetAll()

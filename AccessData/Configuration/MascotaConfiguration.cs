@@ -10,7 +10,7 @@ namespace AccessData.Configuration
             entityBuilder.HasIndex(x => x.MascotaId);
             entityBuilder.Property(x => x.Nombre).IsRequired().HasMaxLength(50);
             entityBuilder.Property(x => x.Edad).IsRequired().HasMaxLength(2);
-            entityBuilder.Property(x => x.Peso).IsRequired().HasMaxLength(3);
+            entityBuilder.Property(x => x.Peso).IsRequired().HasMaxLength(2);
         }
     }
 }

@@ -2,7 +2,12 @@ using AccessData;
 using AccessData.Commands;
 using AccessData.Queries;
 using AccessData.Queries.Repository;
+using AccessData.Validations;
 using Application.Services;
+using Domain.Entities;
+using Domain.Models;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +32,7 @@ namespace PetsLife
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PetsLife", Version = "v1" });
@@ -56,7 +61,12 @@ namespace PetsLife
             services.AddTransient<ITurnoService, TurnoService>();
             services.AddTransient<ITurnoQueries, TurnoQueries>();
 
-
+            services.AddTransient<IValidator<Cliente>, ClienteValidator>();
+            services.AddTransient<IValidator<HistoriaClinica>, HistoriaClinicaValidator>();
+            services.AddTransient<IValidator<Mascota>, MascotaValidator>();
+            services.AddTransient<IValidator<Registro>, RegistroValidator>();
+            services.AddTransient<IValidator<Turno>, TurnoValidator>();
+            services.AddTransient<IValidator<Veterinario>, VeterinarioValidator>();
 
             //Added CORS
             services.AddCors(c =>

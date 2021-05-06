@@ -1,7 +1,9 @@
 ﻿using AccessData.Commands;
 using AccessData.Queries.Repository;
+using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Entities;
+using FluentValidation;
 
 namespace Application.Services
 {
@@ -30,6 +32,9 @@ namespace Application.Services
                 Edad = mascotaDto.Edad,
                 ClienteId = mascotaDto.ClienteId
             };
+
+            var validator = new MascotaValidator();
+            validator.ValidateAndThrow(mascota);
 
             _repository.Add<Mascota>(mascota);
 

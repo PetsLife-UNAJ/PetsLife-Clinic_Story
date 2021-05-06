@@ -1,7 +1,9 @@
 ﻿using AccessData.Commands;
 using AccessData.Queries.Repository;
+using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Models;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,10 @@ namespace Application.Services
              MascotaId=model.MascotaId,
              CalendarioTurnoId=model.CalendarioTurnoId
             };
+
+            var validator = new TurnoValidator();
+            validator.ValidateAndThrow(entity);
+
             _repository.Add<Turno>(entity);
             return new ResponseTurno {
                 Fecha = model.Fecha,
