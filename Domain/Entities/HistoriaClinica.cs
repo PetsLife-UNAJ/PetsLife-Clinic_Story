@@ -9,7 +9,8 @@ namespace Domain.Models
 
         //Fks
         public List<Registro> Registros { get; set; }
-        public int MascotaId { get; set; }
+
         public Mascota Mascota { get; set; }
+        public int MascotaId { get; set; }
     }
 }

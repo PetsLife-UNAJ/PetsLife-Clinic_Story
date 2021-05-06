@@ -33,6 +33,7 @@ namespace Application.Services
             validator.ValidateAndThrow(entity);
 
             _repository.Add<Turno>(entity);
+            _repository.SaveChanges();
             return new ResponseTurno
             {
                 Fecha = model.Fecha,
@@ -47,7 +48,5 @@ namespace Application.Services
         {
             return _query.GetAllByFecha(fecha);
         }
-
-
     }
 }

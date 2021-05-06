@@ -6,7 +6,6 @@ namespace AccessData.Commands
     {
         private readonly ApplicationDbContext _context;
 
-
         public GenericRepository(ApplicationDbContext templateDbContext)
         {
             _context = templateDbContext;
@@ -15,7 +14,6 @@ namespace AccessData.Commands
         public void Add<T>(T entity) where T : class
         {
             _context.Add(entity);
-            _context.SaveChanges();
         }
 
         public void Delete<T>(T entity) where T : class
@@ -27,6 +25,9 @@ namespace AccessData.Commands
         {
             _context.Entry(entity).State = EntityState.Modified;
         }
-
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

@@ -21,18 +21,5 @@ namespace Clinic_Story_API.Controllers
         {
             return new JsonResult(_service.GetHistoriaClinicaByMascotaId(MascotaId)) { StatusCode = 200 };
         }
-
-        [HttpPost]
-        public IActionResult Post(HistoriaClinicaDTO HistoriaClinica)
-        {
-            try
-            {
-                return new JsonResult(_service.CreateHistoriaClinica(HistoriaClinica)) { StatusCode = 201 };
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
     }
 }

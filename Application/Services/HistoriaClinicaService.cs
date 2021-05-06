@@ -9,7 +9,6 @@ namespace Application.Services
 {
     public interface IHistoriaClinicaService
     {
-        ResponseHistoriaClinica CreateHistoriaClinica(HistoriaClinicaDTO id);
         List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId);
     }
 
@@ -23,27 +22,6 @@ namespace Application.Services
             _repository = repository;
             _query = query;
         }
-
-        public ResponseHistoriaClinica CreateHistoriaClinica(HistoriaClinicaDTO historiaclinica)
-        {
-
-            HistoriaClinica hc = new HistoriaClinica
-            {
-                MascotaId = historiaclinica.MascotaId
-            };
-
-            var validator = new HistoriaClinicaValidator();
-            validator.ValidateAndThrow(hc);
-
-            _repository.Add<HistoriaClinica>(hc);
-
-            return new ResponseHistoriaClinica
-            {
-                Id = hc.HistoriaClinicaId,
-                MascotaId = hc.MascotaId
-            };
-        }
-
 
         public List<HistoriaClinica_RegistrosDTO> GetHistoriaClinicaByMascotaId(int mascotaId)
         {

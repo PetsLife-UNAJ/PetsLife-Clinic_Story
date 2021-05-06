@@ -26,6 +26,7 @@ namespace Application.Services
             };
 
             _repository.Add<Tratamiento>(tratamiento);
+            _repository.SaveChanges();
 
             return new ResponseTratamiento
             {

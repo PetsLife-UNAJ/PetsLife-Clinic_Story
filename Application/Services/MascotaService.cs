@@ -3,6 +3,7 @@ using AccessData.Queries.Repository;
 using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Entities;
+using Domain.Models;
 using FluentValidation;
 
 namespace Application.Services
@@ -33,10 +34,23 @@ namespace Application.Services
                 ClienteId = mascotaDto.ClienteId
             };
 
-            var validator = new MascotaValidator();
-            validator.ValidateAndThrow(mascota);
-
             _repository.Add<Mascota>(mascota);
+
+            var validatorMascota = new MascotaValidator();
+            validatorMascota.ValidateAndThrow(mascota);
+
+            _repository.SaveChanges();
+
+            HistoriaClinica hc = new HistoriaClinica
+            {
+                MascotaId = mascota.MascotaId
+            };
+
+            var validatorHHCC = new HistoriaClinicaValidator();
+            validatorHHCC.ValidateAndThrow(hc);
+
+            _repository.Add<HistoriaClinica>(hc);
+            _repository.SaveChanges();
 
             return new ResponseMascota
             {

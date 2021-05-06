@@ -42,8 +42,8 @@ namespace Application.Services
             validator.ValidateAndThrow(entity);
 
             _repository.Add<Cliente>(entity);
+            _repository.SaveChanges();
             return new GenericCreatedResponseDto { Entity = "Cliente", Id = entity.ClienteId.ToString() };
-
         }
 
         public List<GetClienteDTO> GetAll()

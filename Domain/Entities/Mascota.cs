@@ -11,6 +11,7 @@ namespace Domain.Entities
 
         //Fks
         public int ClienteId { get; set; }
+
         public Cliente Cliente { get; set; }
 
         public Turno Turno { get; set; }

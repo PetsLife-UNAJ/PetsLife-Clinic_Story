@@ -40,7 +40,7 @@ namespace Application.Services
             validator.ValidateAndThrow(veterinario);
 
             _repository.Add<Veterinario>(veterinario);
-
+            _repository.SaveChanges();
             return new ResponseVeterinario
             {
                 VeterinarioId = veterinario.VeterinarioId,

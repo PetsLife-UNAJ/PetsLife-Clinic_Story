@@ -34,6 +34,7 @@ namespace Application.Services
             validator.ValidateAndThrow(entity);
 
             _repository.Add<Registro>(entity);
+            _repository.SaveChanges();
 
             return new ResponseRegistro
             {
