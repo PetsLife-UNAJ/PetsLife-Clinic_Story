@@ -115,7 +115,7 @@ namespace AccessData.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Peso")
-                        .HasMaxLength(3)
+                        .HasMaxLength(2)
                         .HasColumnType("int");
 
                     b.HasKey("MascotaId");

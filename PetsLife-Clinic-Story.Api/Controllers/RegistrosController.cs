@@ -1,6 +1,7 @@
 ﻿using Application.Services;
 using Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Clinic_Story_API.Controllers
 {
@@ -18,7 +19,14 @@ namespace Clinic_Story_API.Controllers
         [HttpPost]
         public IActionResult Post(RegistroDTO registro)
         {
-            return new JsonResult(_service.CreateRegistro(registro));
+            try
+            {
+                return new JsonResult(_service.CreateRegistro(registro)) { StatusCode = 201 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

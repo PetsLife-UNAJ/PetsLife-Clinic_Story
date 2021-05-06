@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace AccessData.Migrations
 {
-    public partial class CreatehhccDB : Migration
+    public partial class clinica : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,7 +48,7 @@ namespace AccessData.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Edad = table.Column<int>(type: "int", maxLength: 2, nullable: false),
-                    Peso = table.Column<int>(type: "int", maxLength: 3, nullable: false),
+                    Peso = table.Column<int>(type: "int", maxLength: 2, nullable: false),
                     ClienteId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

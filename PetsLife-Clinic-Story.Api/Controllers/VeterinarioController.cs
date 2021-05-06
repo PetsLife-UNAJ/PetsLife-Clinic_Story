@@ -21,7 +21,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         {
             try
             {
-                return new JsonResult(_service.Create(veterinarioDTO));
+                return new JsonResult(_service.Create(veterinarioDTO)) { StatusCode = 201 };
             }
             catch (Exception e)
             {

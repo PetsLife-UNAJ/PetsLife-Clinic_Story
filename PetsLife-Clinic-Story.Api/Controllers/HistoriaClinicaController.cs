@@ -1,6 +1,7 @@
 ﻿using Application.Services;
 using Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Clinic_Story_API.Controllers
 {
@@ -24,7 +25,14 @@ namespace Clinic_Story_API.Controllers
         [HttpPost]
         public IActionResult Post(HistoriaClinicaDTO HistoriaClinica)
         {
-            return new JsonResult(_service.CreateHistoriaClinica(HistoriaClinica));
+            try
+            {
+                return new JsonResult(_service.CreateHistoriaClinica(HistoriaClinica)) { StatusCode = 201 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

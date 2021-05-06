@@ -1,11 +1,7 @@
 ﻿using AccessData.Queries.Repository;
 using Domain.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PetsLife_Clinic_Story.Api.Controllers
 {
@@ -34,7 +30,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllTurnoByFecha([FromQuery]string fecha)
+        public IActionResult GetAllTurnoByFecha([FromQuery] string fecha)
         {
             try
             {

@@ -30,21 +30,22 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get([FromRoute]int id)
+        public IActionResult Get([FromRoute] int id)
         {
             try
             {
                 var cliente = _clienteService.GetClienteById(id);
                 if (cliente == null)
+                {
                     return NotFound();
+                }
 
-                return new JsonResult(cliente)  { StatusCode = 200 };
+                return new JsonResult(cliente) { StatusCode = 200 };
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-
         }
 
         [HttpPost]

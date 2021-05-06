@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210505075637_CreatehhccDB")]
-    partial class CreatehhccDB
+    [Migration("20210506201311_clinica")]
+    partial class clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,7 +117,7 @@ namespace AccessData.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Peso")
-                        .HasMaxLength(3)
+                        .HasMaxLength(2)
                         .HasColumnType("int");
 
                     b.HasKey("MascotaId");
