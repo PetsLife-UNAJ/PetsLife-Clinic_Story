@@ -30,7 +30,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get([FromRoute]int id)
         {
             try
             {
