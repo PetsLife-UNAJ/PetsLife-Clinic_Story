@@ -8,11 +8,7 @@ namespace Domain.DTOs
         public DateTime HoraInicio { get; set; }
         public DateTime Horafin { get; set; }
 
-
+        public int VeterinarioId { get; set; }
         public int MascotaId { get; set; }
-
-
-        public int CalendarioTurnoId { get; set; }
-
     }
 }

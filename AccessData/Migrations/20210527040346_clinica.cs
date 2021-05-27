@@ -151,21 +151,28 @@ namespace AccessData.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CalendarioTurno",
+                name: "Turno",
                 columns: table => new
                 {
-                    CalendarioTurnoId = table.Column<int>(type: "int", nullable: false)
+                    TurnoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Dia = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Horafin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MascotaId = table.Column<int>(type: "int", nullable: false),
                     VeterinarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CalendarioTurno", x => x.CalendarioTurnoId);
+                    table.PrimaryKey("PK_Turno", x => x.TurnoId);
                     table.ForeignKey(
-                        name: "FK_CalendarioTurno_Veterinario_VeterinarioId",
+                        name: "FK_Turno_Mascota_MascotaId",
+                        column: x => x.MascotaId,
+                        principalTable: "Mascota",
+                        principalColumn: "MascotaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Turno_Veterinario_VeterinarioId",
                         column: x => x.VeterinarioId,
                         principalTable: "Veterinario",
                         principalColumn: "VeterinarioId",
@@ -189,35 +196,6 @@ namespace AccessData.Migrations
                         column: x => x.RegistroId,
                         principalTable: "Registros",
                         principalColumn: "RegistroId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Turno",
-                columns: table => new
-                {
-                    TurnoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Horafin = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MascotaId = table.Column<int>(type: "int", nullable: false),
-                    CalendarioTurnoId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Turno", x => x.TurnoId);
-                    table.ForeignKey(
-                        name: "FK_Turno_CalendarioTurno_CalendarioTurnoId",
-                        column: x => x.CalendarioTurnoId,
-                        principalTable: "CalendarioTurno",
-                        principalColumn: "CalendarioTurnoId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Turno_Mascota_MascotaId",
-                        column: x => x.MascotaId,
-                        principalTable: "Mascota",
-                        principalColumn: "MascotaId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -257,11 +235,6 @@ namespace AccessData.Migrations
                 table: "Veterinario",
                 columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
                 values: new object[] { 2, "Perez", 2, "321321321", "Calle 132 7654", "juandiaz@gmail.com", "24-3-1958", "XSD213", "Martina", "f", "4232136" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CalendarioTurno_VeterinarioId",
-                table: "CalendarioTurno",
-                column: "VeterinarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cliente_ClienteId",
@@ -316,11 +289,6 @@ namespace AccessData.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Turno_CalendarioTurnoId",
-                table: "Turno",
-                column: "CalendarioTurnoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Turno_MascotaId",
                 table: "Turno",
                 column: "MascotaId",
@@ -330,6 +298,11 @@ namespace AccessData.Migrations
                 name: "IX_Turno_TurnoId",
                 table: "Turno",
                 column: "TurnoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Turno_VeterinarioId",
+                table: "Turno",
+                column: "VeterinarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Veterinaria_VeterinariaId",
@@ -360,25 +333,22 @@ namespace AccessData.Migrations
                 name: "Registros");
 
             migrationBuilder.DropTable(
-                name: "CalendarioTurno");
+                name: "Veterinario");
 
             migrationBuilder.DropTable(
                 name: "HistoriasClinicas");
 
             migrationBuilder.DropTable(
-                name: "Veterinario");
+                name: "Consultorio");
 
             migrationBuilder.DropTable(
                 name: "Mascota");
 
             migrationBuilder.DropTable(
-                name: "Consultorio");
+                name: "Veterinaria");
 
             migrationBuilder.DropTable(
                 name: "Cliente");
-
-            migrationBuilder.DropTable(
-                name: "Veterinaria");
         }
     }
 }

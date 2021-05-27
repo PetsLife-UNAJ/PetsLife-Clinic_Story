@@ -1,7 +1,5 @@
 ﻿using Application.Services;
-using Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace Clinic_Story_API.Controllers
 {

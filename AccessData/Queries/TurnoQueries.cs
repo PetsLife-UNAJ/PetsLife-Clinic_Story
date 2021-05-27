@@ -10,7 +10,6 @@ namespace AccessData.Queries
 {
     public class TurnoQueries : ITurnoQueries
     {
-
         private readonly IDbConnection connection;
         private readonly Compiler sqlKataCompiler;
 
@@ -23,14 +22,9 @@ namespace AccessData.Queries
         public List<ResponseTurno> GetAllByFecha(string fecha)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var turnos = db.Query("Turno").Select("Fecha", "HoraInicio", "Horafin", "MascotaId", "CalendarioTurnoId").Where("Fecha", "=", fecha).Get<ResponseTurno>().ToList();
-
-
+            var turnos = db.Query("Turno").Select("Fecha", "HoraInicio", "Horafin", "MascotaId").Where("Fecha", "=", fecha).Get<ResponseTurno>().ToList();
 
             return new List<ResponseTurno>(turnos);
         }
-
-
-
     }
 }

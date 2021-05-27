@@ -4,6 +4,7 @@ using AccessData.Validations;
 using Domain.DTOs;
 using Domain.Models;
 using FluentValidation;
+using System;
 using System.Collections.Generic;
 
 namespace Application.Services
@@ -20,27 +21,34 @@ namespace Application.Services
 
         public ResponseTurno Create(TurnoDTO model)
         {
+            DateTime fecha = Convert.ToDateTime(model.Fecha);
+            DateTime horaInicio = Convert.ToDateTime(model.HoraInicio);
+            DateTime horaFin = Convert.ToDateTime(model.Horafin);
+
+            DateTime inicio = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaInicio.Hour, horaInicio.Minute, 0);
+            DateTime fin = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaFin.Hour, horaFin.Minute, 0);
+
             Turno entity = new Turno
             {
-                Fecha = model.Fecha,
-                HoraInicio = model.HoraInicio,
-                Horafin = model.Horafin,
+                Fecha = fecha,
+                HoraInicio = inicio,
+                Horafin = fin,
                 MascotaId = model.MascotaId,
-                CalendarioTurnoId = model.CalendarioTurnoId
+                VeterinarioId = model.VeterinarioId
             };
 
-            var validator = new TurnoValidator();
-            validator.ValidateAndThrow(entity);
+            //var validator = new TurnoValidator();
+            //validator.ValidateAndThrow(entity);
 
             _repository.Add<Turno>(entity);
             _repository.SaveChanges();
             return new ResponseTurno
             {
-                Fecha = model.Fecha,
-                HoraInicio = model.HoraInicio,
-                Horafin = model.Horafin,
-                MascotaId = model.MascotaId,
-                CalendarioTurnoId = model.CalendarioTurnoId
+                Fecha = fecha,
+                HoraInicio = inicio,
+                Horafin = fin,
+                MascotaId = entity.MascotaId,
+                VeterinarioId = entity.VeterinarioId
             };
         }
 

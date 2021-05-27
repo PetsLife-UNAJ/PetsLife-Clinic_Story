@@ -242,33 +242,6 @@ namespace AccessData.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.CalendarioTurno", b =>
-                {
-                    b.Property<int>("CalendarioTurnoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Dia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("HoraInicio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Horafin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("VeterinarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CalendarioTurnoId");
-
-                    b.HasIndex("VeterinarioId");
-
-                    b.ToTable("CalendarioTurno");
-                });
-
             modelBuilder.Entity("Domain.Models.Consultorio", b =>
                 {
                     b.Property<int>("ConsultorioId")
@@ -378,9 +351,6 @@ namespace AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CalendarioTurnoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
@@ -393,14 +363,17 @@ namespace AccessData.Migrations
                     b.Property<int>("MascotaId")
                         .HasColumnType("int");
 
-                    b.HasKey("TurnoId");
+                    b.Property<int>("VeterinarioId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CalendarioTurnoId");
+                    b.HasKey("TurnoId");
 
                     b.HasIndex("MascotaId")
                         .IsUnique();
 
                     b.HasIndex("TurnoId");
+
+                    b.HasIndex("VeterinarioId");
 
                     b.ToTable("Turno");
                 });
@@ -476,17 +449,6 @@ namespace AccessData.Migrations
                     b.Navigation("Consultorio");
                 });
 
-            modelBuilder.Entity("Domain.Models.CalendarioTurno", b =>
-                {
-                    b.HasOne("Domain.Entities.Veterinario", "Veterinario")
-                        .WithMany("CalendarioTurnos")
-                        .HasForeignKey("VeterinarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Veterinario");
-                });
-
             modelBuilder.Entity("Domain.Models.Consultorio", b =>
                 {
                     b.HasOne("Domain.Models.Veterinaria", "Veterinaria")
@@ -522,21 +484,21 @@ namespace AccessData.Migrations
 
             modelBuilder.Entity("Domain.Models.Turno", b =>
                 {
-                    b.HasOne("Domain.Models.CalendarioTurno", "CalendarioTurno")
-                        .WithMany("Turnos")
-                        .HasForeignKey("CalendarioTurnoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.Entities.Mascota", "Mascota")
                         .WithOne("Turno")
                         .HasForeignKey("Domain.Models.Turno", "MascotaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CalendarioTurno");
+                    b.HasOne("Domain.Entities.Veterinario", "Veterinario")
+                        .WithMany("Turnos")
+                        .HasForeignKey("VeterinarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Mascota");
+
+                    b.Navigation("Veterinario");
                 });
 
             modelBuilder.Entity("Domain.Entities.Cliente", b =>
@@ -552,11 +514,6 @@ namespace AccessData.Migrations
                 });
 
             modelBuilder.Entity("Domain.Entities.Veterinario", b =>
-                {
-                    b.Navigation("CalendarioTurnos");
-                });
-
-            modelBuilder.Entity("Domain.Models.CalendarioTurno", b =>
                 {
                     b.Navigation("Turnos");
                 });

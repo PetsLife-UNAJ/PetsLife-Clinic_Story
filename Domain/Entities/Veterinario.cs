@@ -21,6 +21,6 @@ namespace Domain.Entities
 
         public int ConsultorioId { get; set; }
 
-        public List<CalendarioTurno> CalendarioTurnos { get; set; }
+        public List<Turno> Turnos { get; set; }
     }
 }

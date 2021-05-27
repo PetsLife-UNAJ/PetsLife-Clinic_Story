@@ -1,8 +1,5 @@
 ﻿using AccessData.Commands;
-using AccessData.Validations;
 using Domain.DTOs;
-using Domain.Models;
-using FluentValidation;
 using System.Collections.Generic;
 
 namespace Application.Services

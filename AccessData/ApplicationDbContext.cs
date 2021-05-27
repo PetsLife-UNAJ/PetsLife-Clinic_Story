@@ -13,8 +13,9 @@ namespace AccessData
 
         public DbSet<HistoriaClinica> HistoriasClinicas { get; set; }
         public DbSet<Registro> Registros { get; set; }
-        public DbSet<CalendarioTurno> CalendarioTurno { get; set; }
+
         public DbSet<Turno> Turno { get; set; }
+
         public DbSet<Consultorio> Consultorio { get; set; }
         public DbSet<Veterinaria> Veterinaria { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
@@ -40,7 +41,6 @@ namespace AccessData
             new VeterinariaConfiguration(modelBuilder.Entity<Veterinaria>());
             new HistoriaClinicaConfiguration(modelBuilder.Entity<HistoriaClinica>());
             new RegistroConfiguration(modelBuilder.Entity<Registro>());
-            new CalendarioTurnoConfiguration(modelBuilder.Entity<CalendarioTurno>());
         }
     }
 }
