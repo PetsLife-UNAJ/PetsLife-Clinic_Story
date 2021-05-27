@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -14,7 +15,7 @@ namespace Domain.Entities
 
         public Cliente Cliente { get; set; }
 
-        public Turno Turno { get; set; }
+        public List<Turno> Turno { get; set; }
 
         public HistoriaClinica HistoriaClinica { get; set; }
     }

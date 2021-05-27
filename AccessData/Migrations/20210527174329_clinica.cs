@@ -291,8 +291,7 @@ namespace AccessData.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Turno_MascotaId",
                 table: "Turno",
-                column: "MascotaId",
-                unique: true);
+                column: "MascotaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Turno_TurnoId",

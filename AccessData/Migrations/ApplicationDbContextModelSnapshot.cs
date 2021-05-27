@@ -368,8 +368,7 @@ namespace AccessData.Migrations
 
                     b.HasKey("TurnoId");
 
-                    b.HasIndex("MascotaId")
-                        .IsUnique();
+                    b.HasIndex("MascotaId");
 
                     b.HasIndex("TurnoId");
 
@@ -485,8 +484,8 @@ namespace AccessData.Migrations
             modelBuilder.Entity("Domain.Models.Turno", b =>
                 {
                     b.HasOne("Domain.Entities.Mascota", "Mascota")
-                        .WithOne("Turno")
-                        .HasForeignKey("Domain.Models.Turno", "MascotaId")
+                        .WithMany("Turno")
+                        .HasForeignKey("MascotaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

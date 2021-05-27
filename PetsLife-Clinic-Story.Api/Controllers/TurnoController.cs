@@ -30,7 +30,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllTurnoByFecha([FromQuery] string fecha)
+        public IActionResult GetAllTurnoByFecha([FromQuery] DateTime? fecha)
         {
             try
             {

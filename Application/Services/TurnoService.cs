@@ -52,7 +52,7 @@ namespace Application.Services
             };
         }
 
-        public List<ResponseTurno> GetAllByFecha(string fecha)
+        public List<ResponseTurno> GetAllByFecha(DateTime? fecha)
         {
             return _query.GetAllByFecha(fecha);
         }

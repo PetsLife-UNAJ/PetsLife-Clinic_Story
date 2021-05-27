@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210527040346_clinica")]
+    [Migration("20210527174329_clinica")]
     partial class clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -370,8 +370,7 @@ namespace AccessData.Migrations
 
                     b.HasKey("TurnoId");
 
-                    b.HasIndex("MascotaId")
-                        .IsUnique();
+                    b.HasIndex("MascotaId");
 
                     b.HasIndex("TurnoId");
 
@@ -487,8 +486,8 @@ namespace AccessData.Migrations
             modelBuilder.Entity("Domain.Models.Turno", b =>
                 {
                     b.HasOne("Domain.Entities.Mascota", "Mascota")
-                        .WithOne("Turno")
-                        .HasForeignKey("Domain.Models.Turno", "MascotaId")
+                        .WithMany("Turno")
+                        .HasForeignKey("MascotaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
