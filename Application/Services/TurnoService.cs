@@ -23,10 +23,22 @@ namespace Application.Services
         {
             DateTime fecha = Convert.ToDateTime(model.Fecha);
             DateTime horaInicio = Convert.ToDateTime(model.HoraInicio);
-            DateTime horaFin = Convert.ToDateTime(model.Horafin);
+
+            DateTime horaFin = horaInicio.AddMinutes(30);
 
             DateTime inicio = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaInicio.Hour, horaInicio.Minute, 0);
             DateTime fin = new DateTime(fecha.Year, fecha.Month, fecha.Day, horaFin.Hour, horaFin.Minute, 0);
+
+            List<int> ListaVeterinariosId = _query.ListVeterinariosDisponibles(fecha, horaInicio);
+
+            Random id = new Random();
+            int VeterinarioDisponible;
+
+            if (ListaVeterinariosId.Count > 0)
+            {
+                VeterinarioDisponible = ListaVeterinariosId[id.Next(0, ListaVeterinariosId.Count - 1)];
+            }
+            else { throw new Exception("No hay veterinarios disponibles en el horario especificado."); }
 
             Turno entity = new Turno
             {
@@ -34,11 +46,11 @@ namespace Application.Services
                 HoraInicio = inicio,
                 Horafin = fin,
                 MascotaId = model.MascotaId,
-                VeterinarioId = model.VeterinarioId
+                VeterinarioId = VeterinarioDisponible
             };
 
-            //var validator = new TurnoValidator();
-            //validator.ValidateAndThrow(entity);
+            var validator = new TurnoValidator();
+            validator.ValidateAndThrow(entity);
 
             _repository.Add<Turno>(entity);
             _repository.SaveChanges();

@@ -35,5 +35,27 @@ namespace AccessData.Queries
                 return query;
             }
         }
+
+        public List<int> ListVeterinariosDisponibles(DateTime fecha, DateTime horaInicio)
+        {
+            var db = new QueryFactory(connection, sqlKataCompiler);
+
+            var ListVeterinariosId = db.Query("Veterinario").Select("VeterinarioId").Get<int>().ToList();
+
+            string inicio = horaInicio.Hour + ":" + horaInicio.Minute;
+
+            var ListVeterinariosIdNoDisponibles = db.Query("Turno").Select("VeterinarioId").WhereDate("Fecha", "=", fecha)
+                .WhereTime("HoraInicio", "=", inicio).Get<int>().ToList();
+
+            foreach (var item in ListVeterinariosIdNoDisponibles)
+            {
+                if (ListVeterinariosId.Contains(item))
+                {
+                    ListVeterinariosId.Remove(item);
+                }
+            }
+
+            return ListVeterinariosId;
+        }
     }
 }

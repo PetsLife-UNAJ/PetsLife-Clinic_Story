@@ -1,4 +1,5 @@
 ﻿using Domain.DTOs;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -7,5 +8,6 @@ namespace AccessData.Queries.Repository
     public interface ITurnoQueries
     {
         public List<ResponseTurno> GetAllByFecha(DateTime? fecha);
+        public List<int> ListVeterinariosDisponibles(DateTime fecha, DateTime horaInicio);
     }
 }

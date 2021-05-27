@@ -22,7 +22,7 @@ namespace AccessData.Validations
                 .MaximumLength(1).WithMessage("El maximo es 1 caracter.");
 
             RuleFor(x => x.Email).NotNull().NotEmpty().WithMessage("El email no debe quedar vacio.")
-               .MaximumLength(12).WithMessage("El maximo es 50 caracteres.");
+               .MaximumLength(50).WithMessage("El maximo es 50 caracteres.");
 
             RuleFor(x => x.Telefono).NotNull().NotEmpty().WithMessage("El email no debe quedar vacio.")
                .MaximumLength(12).WithMessage("El maximo es 12 caracteres.");
