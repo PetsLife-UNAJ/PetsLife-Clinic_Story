@@ -41,5 +41,18 @@ namespace PetsLife_Clinic_Story.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{VeterinarioId}")]
+        public IActionResult GetTurnosByVeterinario([FromRoute] int VeterinarioId)
+        {
+            try
+            {
+                return new JsonResult(_turnoService.GetTurnosByVeterinarioId(VeterinarioId)) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

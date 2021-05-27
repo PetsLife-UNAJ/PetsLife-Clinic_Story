@@ -23,7 +23,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
             {
                 return new JsonResult(_service.CreateTratamiento(tratamiento)) { StatusCode = 201 };
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new BadRequestResult();
             }

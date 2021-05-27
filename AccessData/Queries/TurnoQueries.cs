@@ -57,5 +57,14 @@ namespace AccessData.Queries
 
             return ListVeterinariosId;
         }
+
+        public List<ResponseTurno> GetByVeterinarioId(int veterinarioId)
+        {
+            var db = new QueryFactory(connection, sqlKataCompiler);
+
+            var query = db.Query("Turno").Where("VeterinarioId", "=", veterinarioId).Get<ResponseTurno>().ToList();
+
+            return query;
+        }
     }
 }

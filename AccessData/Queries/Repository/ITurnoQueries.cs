@@ -9,5 +9,6 @@ namespace AccessData.Queries.Repository
     {
         public List<ResponseTurno> GetAllByFecha(DateTime? fecha);
         public List<int> ListVeterinariosDisponibles(DateTime fecha, DateTime horaInicio);
+        public List<ResponseTurno> GetByVeterinarioId(int veterinarioId);
     }
 }

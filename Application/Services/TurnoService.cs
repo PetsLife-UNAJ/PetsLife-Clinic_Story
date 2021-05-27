@@ -68,5 +68,10 @@ namespace Application.Services
         {
             return _query.GetAllByFecha(fecha);
         }
+
+        public List<ResponseTurno> GetTurnosByVeterinarioId(int veterinarioId)
+        {
+            return _query.GetByVeterinarioId(veterinarioId);
+        }
     }
 }

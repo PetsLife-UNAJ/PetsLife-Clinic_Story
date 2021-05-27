@@ -8,5 +8,6 @@ namespace AccessData.Queries.Repository
     {
         public ResponseTurno Create(TurnoDTO model);
         public List<ResponseTurno> GetAllByFecha(DateTime? fecha);
+        public List<ResponseTurno> GetTurnosByVeterinarioId(int veterinarioId);
     }
 }
