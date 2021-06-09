@@ -20,18 +20,32 @@ namespace AccessData.Queries
             this.sqlKataCompiler = sqlKataCompiler;
         }
 
-        public List<ResponseTurno> GetAllByFecha(DateTime? fecha)
+        public List<ResponseTurnoData> GetAllByFecha(DateTime? fecha)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
             if (fecha != null)
             {
-                var query = db.Query("Turno").WhereDate("Fecha", "=", fecha).Get<ResponseTurno>().ToList();
+                var query = db.Query("Turno").Select("*").Select("Veterinario.Nombre as VeterinarioNombre", "Veterinario.Apellido as VeterinarioApellido",
+                    "Consultorio.Numero as ConsultorioNumero", "Mascota.Nombre as MascotaNombre", "Cliente.Nombre as ClienteNombre", "Cliente.Apellido as ClienteApellido", "Cliente.Telefono as ClienteTelefono")
+                    .Join("Veterinario", "Veterinario.VeterinarioId", "Turno.VeterinarioId")
+                    .Join("Consultorio", "Consultorio.ConsultorioId", "Veterinario.ConsultorioId")
+                    .Join("Mascota", "Mascota.MascotaId", "Turno.MascotaId")
+                    .Join("Cliente", "Cliente.ClienteId", "Mascota.ClienteId")
+
+                    .WhereDate("Fecha", "=", fecha).Get<ResponseTurnoData>().ToList();
                 return query;
             }
             else
             {
-                var query = db.Query("Turno").Get<ResponseTurno>().ToList();
+                var query = db.Query("Turno")
+                    .Select("*").Select("Veterinario.Nombre as VeterinarioNombre", "Veterinario.Apellido as VeterinarioApellido",
+                    "Consultorio.Numero as ConsultorioNumero", "Mascota.Nombre as MascotaNombre", "Cliente.Nombre as ClienteNombre", "Cliente.Apellido as ClienteApellido", "Cliente.Telefono as ClienteTelefono")
+                     .Join("Veterinario", "Veterinario.VeterinarioId", "Turno.VeterinarioId")
+                    .Join("Consultorio", "Consultorio.ConsultorioId", "Veterinario.ConsultorioId")
+                    .Join("Mascota", "Mascota.MascotaId", "Turno.MascotaId")
+                    .Join("Cliente", "Cliente.ClienteId", "Mascota.ClienteId")
+                    .Get<ResponseTurnoData>().ToList();
                 return query;
             }
         }

@@ -7,7 +7,7 @@ namespace AccessData.Queries.Repository
     public interface ITurnoService
     {
         public ResponseTurno Create(TurnoDTO model);
-        public List<ResponseTurno> GetAllByFecha(DateTime? fecha);
+        public List<ResponseTurnoData> GetAllByFecha(DateTime? fecha);
         public List<ResponseTurno> GetTurnosByVeterinarioId(int veterinarioId);
     }
 }
