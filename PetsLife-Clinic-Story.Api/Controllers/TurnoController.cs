@@ -1,5 +1,6 @@
 ﻿using AccessData.Queries.Repository;
 using Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,6 +8,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class TurnoController : ControllerBase
     {
         private readonly ITurnoService _turnoService;

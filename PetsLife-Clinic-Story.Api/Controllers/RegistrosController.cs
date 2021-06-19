@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,6 +8,7 @@ namespace Clinic_Story_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class RegistrosController : ControllerBase
     {
         private readonly IRegistroService _service;

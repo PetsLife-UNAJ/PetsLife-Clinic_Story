@@ -1,10 +1,12 @@
 ﻿using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic_Story_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class HistoriaClinicaController : ControllerBase
     {
         private readonly IHistoriaClinicaService _service;
