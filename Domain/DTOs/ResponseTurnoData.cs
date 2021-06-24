@@ -4,6 +4,7 @@ namespace Domain.DTOs
 {
     public class ResponseTurnoData
     {
+        public int TurnoId { get; set; }
         public DateTime Fecha { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime Horafin { get; set; }

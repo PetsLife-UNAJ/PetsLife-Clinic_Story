@@ -1,5 +1,4 @@
 ﻿using Application.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic_Story_API.Controllers

@@ -1,5 +1,6 @@
 ﻿using AccessData.Queries.Repository;
 using Domain.DTOs;
+using Domain.Models;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using System;
@@ -72,11 +73,26 @@ namespace AccessData.Queries
             return ListVeterinariosId;
         }
 
-        public List<ResponseTurno> GetByVeterinarioId(int veterinarioId)
+        public List<ResponseTurnoData> GetByVeterinarioId(int veterinarioId, DateTime fecha)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
+            var query = db.Query("Turno").Select("*").Select("Veterinario.Nombre as VeterinarioNombre", "Veterinario.Apellido as VeterinarioApellido",
+                   "Consultorio.Numero as ConsultorioNumero", "Mascota.Nombre as MascotaNombre", "Cliente.Nombre as ClienteNombre", "Cliente.Apellido as ClienteApellido", "Cliente.Telefono as ClienteTelefono")
+                   .Join("Veterinario", "Veterinario.VeterinarioId", "Turno.VeterinarioId")
+                   .Join("Consultorio", "Consultorio.ConsultorioId", "Veterinario.ConsultorioId")
+                   .Join("Mascota", "Mascota.MascotaId", "Turno.MascotaId")
+                   .Join("Cliente", "Cliente.ClienteId", "Mascota.ClienteId")
+                   .WhereDate("Fecha", "=", fecha)
+                   .Where("Veterinario.VeterinarioId", "=", veterinarioId)
+                   .Get<ResponseTurnoData>().ToList();
 
-            var query = db.Query("Turno").Where("VeterinarioId", "=", veterinarioId).Get<ResponseTurno>().ToList();
+            return query;
+        }
+
+        public Turno getTurnoById(int turnoId)
+        {
+            var db = new QueryFactory(connection, sqlKataCompiler);
+            var query = db.Query("Turno").Select("*").Where("TurnoId", "=", turnoId).Get<Turno>().FirstOrDefault();
 
             return query;
         }

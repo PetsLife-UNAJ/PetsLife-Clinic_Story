@@ -24,13 +24,20 @@ namespace AccessData.Queries
             var db = new QueryFactory(connection, sqlKataCompiler);
             var query = db.Query("HistoriasClinicas")
                 .Select("*").Select("Descripcion as Tratamiento").
-                Join("Registros", "HistoriasClinicas.HistoriaClinicaId", "Registros.HistoriaClinicaId", "=")
+                Join("Registros", "HistoriasClinicas.HistoriaClinicaId", "Registros.HistoriaClinicaId")
                 .Join("Tratamiento", "Registros.RegistroId", "Tratamiento.RegistroId").
-                Where("MascotaId", "=", mascotaId);
+                Where("HistoriasClinicas.MascotaId", "=", mascotaId);
 
-            var result = query.Get<HistoriaClinica_RegistrosDTO>();
+            var result = query.Get<HistoriaClinica_RegistrosDTO>().ToList();
 
-            return result.ToList();
+            if (result.Count == 0)
+            {
+                result = db.Query("HistoriasClinicas")
+                 .Select("*")
+                 .Where("HistoriasClinicas.MascotaId", "=", mascotaId).Get<HistoriaClinica_RegistrosDTO>().ToList();
+            }
+
+            return result;
         }
     }
 }

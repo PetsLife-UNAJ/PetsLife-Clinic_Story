@@ -64,14 +64,23 @@ namespace Application.Services
             };
         }
 
+        public void DeleteTurnoById(int turnoId)
+        {
+            Turno turno = _query.getTurnoById(turnoId);
+            _repository.Delete<Turno>(turno);
+            _repository.SaveChanges();
+        }
+
         public List<ResponseTurnoData> GetAllByFecha(DateTime? fecha)
         {
             return _query.GetAllByFecha(fecha);
         }
 
-        public List<ResponseTurno> GetTurnosByVeterinarioId(int veterinarioId)
+        public List<ResponseTurnoData> GetTurnosByVeterinarioId(int veterinarioId)
         {
-            return _query.GetByVeterinarioId(veterinarioId);
+            DateTime fecha = DateTime.Now.Date;
+
+            return _query.GetByVeterinarioId(veterinarioId, fecha);
         }
     }
 }

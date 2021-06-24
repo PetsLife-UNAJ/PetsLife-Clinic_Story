@@ -1,6 +1,5 @@
 ﻿using Application.Services;
 using Domain.DTOs;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
