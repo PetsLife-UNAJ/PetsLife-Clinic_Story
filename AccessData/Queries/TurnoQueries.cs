@@ -32,6 +32,7 @@ namespace AccessData.Queries
                     .Join("Veterinario", "Veterinario.VeterinarioId", "Turno.VeterinarioId")
                     .Join("Consultorio", "Consultorio.ConsultorioId", "Veterinario.ConsultorioId")
                     .Join("Mascota", "Mascota.MascotaId", "Turno.MascotaId")
+                     .Join("HistoriasClinicas", "HistoriasClinicas.MascotaId", "Turno.MascotaId")
                     .Join("Cliente", "Cliente.ClienteId", "Mascota.ClienteId")
 
                     .WhereDate("Fecha", "=", fecha).Get<ResponseTurnoData>().ToList();
@@ -45,6 +46,7 @@ namespace AccessData.Queries
                      .Join("Veterinario", "Veterinario.VeterinarioId", "Turno.VeterinarioId")
                     .Join("Consultorio", "Consultorio.ConsultorioId", "Veterinario.ConsultorioId")
                     .Join("Mascota", "Mascota.MascotaId", "Turno.MascotaId")
+                     .Join("HistoriasClinicas", "HistoriasClinicas.MascotaId", "Turno.MascotaId")
                     .Join("Cliente", "Cliente.ClienteId", "Mascota.ClienteId")
                     .Get<ResponseTurnoData>().ToList();
                 return query;
@@ -82,6 +84,7 @@ namespace AccessData.Queries
                    .Join("Consultorio", "Consultorio.ConsultorioId", "Veterinario.ConsultorioId")
                    .Join("Mascota", "Mascota.MascotaId", "Turno.MascotaId")
                    .Join("Cliente", "Cliente.ClienteId", "Mascota.ClienteId")
+                   .Join("HistoriasClinicas","HistoriasClinicas.MascotaId","Turno.MascotaId")
                    .WhereDate("Fecha", "=", fecha)
                    .Where("Veterinario.VeterinarioId", "=", veterinarioId)
                    .Get<ResponseTurnoData>().ToList();

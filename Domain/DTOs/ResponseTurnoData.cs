@@ -16,6 +16,7 @@ namespace Domain.DTOs
 
         public int MascotaId { get; set; }
         public string MascotaNombre { get; set; }
+        public int HistoriaClinicaId { get; set; }
 
         public int ClienteId { get; set; }
         public string ClienteNombre { get; set; }
