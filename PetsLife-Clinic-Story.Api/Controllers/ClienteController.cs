@@ -8,7 +8,6 @@ namespace PetsLife_Clinic_Story.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ClienteController : ControllerBase
     {
         private readonly IClienteService _clienteService;
@@ -17,7 +16,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
         {
             _clienteService = clienteService;
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -30,7 +29,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get([FromRoute] int id)
         {

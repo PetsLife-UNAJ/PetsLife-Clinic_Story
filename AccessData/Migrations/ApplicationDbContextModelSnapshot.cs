@@ -63,33 +63,13 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
-                            ClienteId = 10,
+                            ClienteId = 5,
                             Apellido = "Bravo",
                             Direccion = "Calle 9 N2946",
                             Dni = "39876453",
-                            Email = "bravo.jose.luis18@gmail.com",
+                            Email = "cliente@gmail.com",
                             Nombre = "Jose",
                             Telefono = "1136756432"
-                        },
-                        new
-                        {
-                            ClienteId = 11,
-                            Apellido = "Damico",
-                            Direccion = "Moreno 322",
-                            Dni = "12383764",
-                            Email = "claudio.damico@gmail.com",
-                            Nombre = "Claudio",
-                            Telefono = "1123455877"
-                        },
-                        new
-                        {
-                            ClienteId = 12,
-                            Apellido = "Nuzzo",
-                            Direccion = "Lavelle 987",
-                            Dni = "39987666",
-                            Email = "julian.nuzzo@gmail.com",
-                            Nombre = "Julian",
-                            Telefono = "1123982376"
                         });
                 });
 
@@ -212,12 +192,12 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
-                            VeterinarioId = 100,
+                            VeterinarioId = 2,
                             Apellido = "Diaz",
                             ConsultorioId = 1,
                             Dni = "42132121",
                             Domicilio = "Calle 21 231",
-                            Email = "juandiaz@gmail.com",
+                            Email = "veterinario2@gmail.com",
                             FechaNacimiento = "14-9-1990",
                             Matricula = "ADS213",
                             Nombre = "Juan",
@@ -226,12 +206,12 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            VeterinarioId = 101,
+                            VeterinarioId = 3,
                             Apellido = "Perez",
                             ConsultorioId = 2,
                             Dni = "321321321",
                             Domicilio = "Calle 132 7654",
-                            Email = "juandiaz@gmail.com",
+                            Email = "veterinario3@gmail.com",
                             FechaNacimiento = "28-3-1958",
                             Matricula = "XSD213",
                             Nombre = "Martina",
@@ -240,45 +220,17 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            VeterinarioId = 102,
+                            VeterinarioId = 4,
                             Apellido = "Martinez",
                             ConsultorioId = 3,
                             Dni = "25432567",
                             Domicilio = "Calle 252 532",
-                            Email = "juandiaz@gmail.com",
+                            Email = "veterinario4@gmail.com",
                             FechaNacimiento = "12-1-1974",
                             Matricula = "TDQ231",
                             Nombre = "Claudio",
                             Sexo = "m",
                             Telefono = "42562132"
-                        },
-                        new
-                        {
-                            VeterinarioId = 103,
-                            Apellido = "Gomez",
-                            ConsultorioId = 4,
-                            Dni = "34568245",
-                            Domicilio = "Calle 689 232",
-                            Email = "juandiaz@gmail.com",
-                            FechaNacimiento = "24-5-1967",
-                            Matricula = "HYC261",
-                            Nombre = "Silvia",
-                            Sexo = "f",
-                            Telefono = "42517831"
-                        },
-                        new
-                        {
-                            VeterinarioId = 104,
-                            Apellido = "Rosales",
-                            ConsultorioId = 5,
-                            Dni = "40568326",
-                            Domicilio = "Calle 998 6343",
-                            Email = "juandiaz@gmail.com",
-                            FechaNacimiento = "22-3-1969",
-                            Matricula = "JLP753",
-                            Nombre = "Clarisa",
-                            Sexo = "f",
-                            Telefono = "53214562"
                         });
                 });
 

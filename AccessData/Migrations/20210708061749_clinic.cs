@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccessData.Migrations
 {
-    public partial class clinica : Migration
+    public partial class clinic : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -201,12 +201,7 @@ namespace AccessData.Migrations
             migrationBuilder.InsertData(
                 table: "Cliente",
                 columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
-                values: new object[,]
-                {
-                    { 10, "Bravo", "Calle 9 N2946", "39876453", "bravo.jose.luis18@gmail.com", "Jose", "1136756432" },
-                    { 11, "Damico", "Moreno 322", "12383764", "claudio.damico@gmail.com", "Claudio", "1123455877" },
-                    { 12, "Nuzzo", "Lavelle 987", "39987666", "julian.nuzzo@gmail.com", "Julian", "1123982376" }
-                });
+                values: new object[] { 5, "Bravo", "Calle 9 N2946", "39876453", "cliente@gmail.com", "Jose", "1136756432" });
 
             migrationBuilder.InsertData(
                 table: "Veterinaria",
@@ -228,14 +223,17 @@ namespace AccessData.Migrations
             migrationBuilder.InsertData(
                 table: "Veterinario",
                 columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
-                values: new object[,]
-                {
-                    { 100, "Diaz", 1, "42132121", "Calle 21 231", "juandiaz@gmail.com", "14-9-1990", "ADS213", "Juan", "m", "42113212" },
-                    { 101, "Perez", 2, "321321321", "Calle 132 7654", "juandiaz@gmail.com", "28-3-1958", "XSD213", "Martina", "f", "4232136" },
-                    { 102, "Martinez", 3, "25432567", "Calle 252 532", "juandiaz@gmail.com", "12-1-1974", "TDQ231", "Claudio", "m", "42562132" },
-                    { 103, "Gomez", 4, "34568245", "Calle 689 232", "juandiaz@gmail.com", "24-5-1967", "HYC261", "Silvia", "f", "42517831" },
-                    { 104, "Rosales", 5, "40568326", "Calle 998 6343", "juandiaz@gmail.com", "22-3-1969", "JLP753", "Clarisa", "f", "53214562" }
-                });
+                values: new object[] { 2, "Diaz", 1, "42132121", "Calle 21 231", "veterinario2@gmail.com", "14-9-1990", "ADS213", "Juan", "m", "42113212" });
+
+            migrationBuilder.InsertData(
+                table: "Veterinario",
+                columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
+                values: new object[] { 3, "Perez", 2, "321321321", "Calle 132 7654", "veterinario3@gmail.com", "28-3-1958", "XSD213", "Martina", "f", "4232136" });
+
+            migrationBuilder.InsertData(
+                table: "Veterinario",
+                columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
+                values: new object[] { 4, "Martinez", 3, "25432567", "Calle 252 532", "veterinario4@gmail.com", "12-1-1974", "TDQ231", "Claudio", "m", "42562132" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cliente_ClienteId",
