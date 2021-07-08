@@ -30,6 +30,7 @@ namespace Application.Services
         {
             Cliente entity = new Cliente
             {
+                ClienteId = model.ClienteId,
                 Nombre = model.Nombre,
                 Apellido = model.Apellido,
                 Email = model.Email,

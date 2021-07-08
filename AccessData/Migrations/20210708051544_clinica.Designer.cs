@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210527174329_clinica")]
+    [Migration("20210708051544_clinica")]
     partial class clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,7 @@ namespace AccessData.Migrations
             modelBuilder.Entity("Domain.Entities.Cliente", b =>
                 {
                     b.Property<int>("ClienteId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Apellido")
                         .IsRequired()
@@ -67,7 +65,7 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
-                            ClienteId = 1,
+                            ClienteId = 10,
                             Apellido = "Bravo",
                             Direccion = "Calle 9 N2946",
                             Dni = "39876453",
@@ -77,7 +75,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ClienteId = 2,
+                            ClienteId = 11,
                             Apellido = "Damico",
                             Direccion = "Moreno 322",
                             Dni = "12383764",
@@ -87,7 +85,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ClienteId = 3,
+                            ClienteId = 12,
                             Apellido = "Nuzzo",
                             Direccion = "Lavelle 987",
                             Dni = "39987666",
@@ -216,7 +214,7 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
-                            VeterinarioId = 1,
+                            VeterinarioId = 100,
                             Apellido = "Diaz",
                             ConsultorioId = 1,
                             Dni = "42132121",
@@ -230,17 +228,59 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            VeterinarioId = 2,
+                            VeterinarioId = 101,
                             Apellido = "Perez",
                             ConsultorioId = 2,
                             Dni = "321321321",
                             Domicilio = "Calle 132 7654",
                             Email = "juandiaz@gmail.com",
-                            FechaNacimiento = "24-3-1958",
+                            FechaNacimiento = "28-3-1958",
                             Matricula = "XSD213",
                             Nombre = "Martina",
                             Sexo = "f",
                             Telefono = "4232136"
+                        },
+                        new
+                        {
+                            VeterinarioId = 102,
+                            Apellido = "Martinez",
+                            ConsultorioId = 3,
+                            Dni = "25432567",
+                            Domicilio = "Calle 252 532",
+                            Email = "juandiaz@gmail.com",
+                            FechaNacimiento = "12-1-1974",
+                            Matricula = "TDQ231",
+                            Nombre = "Claudio",
+                            Sexo = "m",
+                            Telefono = "42562132"
+                        },
+                        new
+                        {
+                            VeterinarioId = 103,
+                            Apellido = "Gomez",
+                            ConsultorioId = 4,
+                            Dni = "34568245",
+                            Domicilio = "Calle 689 232",
+                            Email = "juandiaz@gmail.com",
+                            FechaNacimiento = "24-5-1967",
+                            Matricula = "HYC261",
+                            Nombre = "Silvia",
+                            Sexo = "f",
+                            Telefono = "42517831"
+                        },
+                        new
+                        {
+                            VeterinarioId = 104,
+                            Apellido = "Rosales",
+                            ConsultorioId = 5,
+                            Dni = "40568326",
+                            Domicilio = "Calle 998 6343",
+                            Email = "juandiaz@gmail.com",
+                            FechaNacimiento = "22-3-1969",
+                            Matricula = "JLP753",
+                            Nombre = "Clarisa",
+                            Sexo = "f",
+                            Telefono = "53214562"
                         });
                 });
 

@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,7 +8,7 @@ namespace PetsLife_Clinic_Story.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ClienteController : ControllerBase
     {
         private readonly IClienteService _clienteService;
