@@ -70,6 +70,16 @@ namespace AccessData.Migrations
                             Email = "cliente@gmail.com",
                             Nombre = "Jose",
                             Telefono = "1136756432"
+                        },
+                        new
+                        {
+                            ClienteId = 6,
+                            Apellido = "Nuzzo",
+                            Direccion = "Calle 123 n152",
+                            Dni = "39823513",
+                            Email = "cliente2@gmail.com",
+                            Nombre = "Julian",
+                            Telefono = "1136755231"
                         });
                 });
 
@@ -103,6 +113,40 @@ namespace AccessData.Migrations
                     b.HasIndex("MascotaId");
 
                     b.ToTable("Mascota");
+
+                    b.HasData(
+                        new
+                        {
+                            MascotaId = 1,
+                            ClienteId = 5,
+                            Edad = 5,
+                            Nombre = "Morena",
+                            Peso = 3
+                        },
+                        new
+                        {
+                            MascotaId = 2,
+                            ClienteId = 5,
+                            Edad = 9,
+                            Nombre = "Tomas",
+                            Peso = 10
+                        },
+                        new
+                        {
+                            MascotaId = 3,
+                            ClienteId = 5,
+                            Edad = 1,
+                            Nombre = "Firulais",
+                            Peso = 2
+                        },
+                        new
+                        {
+                            MascotaId = 4,
+                            ClienteId = 6,
+                            Edad = 12,
+                            Nombre = "Lola",
+                            Peso = 21
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Tratamiento", b =>
@@ -124,6 +168,44 @@ namespace AccessData.Migrations
                         .IsUnique();
 
                     b.ToTable("Tratamiento");
+
+                    b.HasData(
+                        new
+                        {
+                            TratamientoId = 1,
+                            Descripcion = "Tratamiento 1",
+                            RegistroId = 1
+                        },
+                        new
+                        {
+                            TratamientoId = 2,
+                            Descripcion = "Tratamiento 2",
+                            RegistroId = 2
+                        },
+                        new
+                        {
+                            TratamientoId = 3,
+                            Descripcion = "Tratamiento 3",
+                            RegistroId = 3
+                        },
+                        new
+                        {
+                            TratamientoId = 4,
+                            Descripcion = "Tratamiento 1",
+                            RegistroId = 4
+                        },
+                        new
+                        {
+                            TratamientoId = 5,
+                            Descripcion = "Tratamiento 1",
+                            RegistroId = 5
+                        },
+                        new
+                        {
+                            TratamientoId = 6,
+                            Descripcion = "Tratamiento 1",
+                            RegistroId = 6
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Veterinario", b =>
@@ -197,7 +279,7 @@ namespace AccessData.Migrations
                             ConsultorioId = 1,
                             Dni = "42132121",
                             Domicilio = "Calle 21 231",
-                            Email = "veterinario2@gmail.com",
+                            Email = "veterinario@gmail.com",
                             FechaNacimiento = "14-9-1990",
                             Matricula = "ADS213",
                             Nombre = "Juan",
@@ -211,25 +293,25 @@ namespace AccessData.Migrations
                             ConsultorioId = 2,
                             Dni = "321321321",
                             Domicilio = "Calle 132 7654",
-                            Email = "veterinario3@gmail.com",
+                            Email = "veterinario2@gmail.com",
                             FechaNacimiento = "28-3-1958",
                             Matricula = "XSD213",
-                            Nombre = "Martina",
+                            Nombre = "Sol",
                             Sexo = "f",
                             Telefono = "4232136"
                         },
                         new
                         {
                             VeterinarioId = 4,
-                            Apellido = "Martinez",
+                            Apellido = "Paz",
                             ConsultorioId = 3,
                             Dni = "25432567",
                             Domicilio = "Calle 252 532",
-                            Email = "veterinario4@gmail.com",
+                            Email = "veterinario3@gmail.com",
                             FechaNacimiento = "12-1-1974",
                             Matricula = "TDQ231",
-                            Nombre = "Claudio",
-                            Sexo = "m",
+                            Nombre = "Mar",
+                            Sexo = "f",
                             Telefono = "42562132"
                         });
                 });
@@ -307,6 +389,28 @@ namespace AccessData.Migrations
                         .IsUnique();
 
                     b.ToTable("HistoriasClinicas");
+
+                    b.HasData(
+                        new
+                        {
+                            HistoriaClinicaId = 1,
+                            MascotaId = 1
+                        },
+                        new
+                        {
+                            HistoriaClinicaId = 2,
+                            MascotaId = 2
+                        },
+                        new
+                        {
+                            HistoriaClinicaId = 3,
+                            MascotaId = 3
+                        },
+                        new
+                        {
+                            HistoriaClinicaId = 4,
+                            MascotaId = 4
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Registro", b =>
@@ -334,6 +438,50 @@ namespace AccessData.Migrations
                     b.HasIndex("RegistroId");
 
                     b.ToTable("Registros");
+
+                    b.HasData(
+                        new
+                        {
+                            RegistroId = 1,
+                            Analisis = "Analisis 1",
+                            FechaCreacion = new DateTime(2021, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HistoriaClinicaId = 1
+                        },
+                        new
+                        {
+                            RegistroId = 2,
+                            Analisis = "Analisis 2",
+                            FechaCreacion = new DateTime(2021, 7, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HistoriaClinicaId = 1
+                        },
+                        new
+                        {
+                            RegistroId = 3,
+                            Analisis = "Analisis 3",
+                            FechaCreacion = new DateTime(2021, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HistoriaClinicaId = 1
+                        },
+                        new
+                        {
+                            RegistroId = 4,
+                            Analisis = "Analisis 1",
+                            FechaCreacion = new DateTime(2021, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HistoriaClinicaId = 2
+                        },
+                        new
+                        {
+                            RegistroId = 5,
+                            Analisis = "Analisis 1",
+                            FechaCreacion = new DateTime(2021, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HistoriaClinicaId = 3
+                        },
+                        new
+                        {
+                            RegistroId = 6,
+                            Analisis = "Analisis 1",
+                            FechaCreacion = new DateTime(2021, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HistoriaClinicaId = 4
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Turno", b =>
@@ -367,6 +515,35 @@ namespace AccessData.Migrations
                     b.HasIndex("VeterinarioId");
 
                     b.ToTable("Turno");
+
+                    b.HasData(
+                        new
+                        {
+                            TurnoId = 1,
+                            Fecha = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HoraInicio = new DateTime(2021, 7, 13, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            Horafin = new DateTime(2021, 7, 13, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            MascotaId = 1,
+                            VeterinarioId = 2
+                        },
+                        new
+                        {
+                            TurnoId = 2,
+                            Fecha = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HoraInicio = new DateTime(2021, 7, 13, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Horafin = new DateTime(2021, 7, 13, 10, 30, 0, 0, DateTimeKind.Unspecified),
+                            MascotaId = 2,
+                            VeterinarioId = 3
+                        },
+                        new
+                        {
+                            TurnoId = 3,
+                            Fecha = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HoraInicio = new DateTime(2021, 7, 13, 17, 30, 0, 0, DateTimeKind.Unspecified),
+                            Horafin = new DateTime(2021, 7, 13, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            MascotaId = 1,
+                            VeterinarioId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Veterinaria", b =>

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccessData.Migrations
 {
@@ -204,6 +204,11 @@ namespace AccessData.Migrations
                 values: new object[] { 5, "Bravo", "Calle 9 N2946", "39876453", "cliente@gmail.com", "Jose", "1136756432" });
 
             migrationBuilder.InsertData(
+                table: "Cliente",
+                columns: new[] { "ClienteId", "Apellido", "Direccion", "Dni", "Email", "Nombre", "Telefono" },
+                values: new object[] { 6, "Nuzzo", "Calle 123 n152", "39823513", "cliente2@gmail.com", "Julian", "1136755231" });
+
+            migrationBuilder.InsertData(
                 table: "Veterinaria",
                 columns: new[] { "VeterinariaId", "Direccion", "Nombre", "Telefono" },
                 values: new object[] { 1, "Av. San martin 382", "Pet's Life", "4256-2351" });
@@ -221,19 +226,72 @@ namespace AccessData.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Veterinario",
-                columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
-                values: new object[] { 2, "Diaz", 1, "42132121", "Calle 21 231", "veterinario2@gmail.com", "14-9-1990", "ADS213", "Juan", "m", "42113212" });
+                table: "Mascota",
+                columns: new[] { "MascotaId", "ClienteId", "Edad", "Nombre", "Peso" },
+                values: new object[,]
+                {
+                    { 1, 5, 5, "Morena", 3 },
+                    { 2, 5, 9, "Tomas", 10 },
+                    { 3, 5, 1, "Firulais", 2 },
+                    { 4, 6, 12, "Lola", 21 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HistoriasClinicas",
+                columns: new[] { "HistoriaClinicaId", "MascotaId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 3, 3 },
+                    { 4, 4 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Veterinario",
                 columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
-                values: new object[] { 3, "Perez", 2, "321321321", "Calle 132 7654", "veterinario3@gmail.com", "28-3-1958", "XSD213", "Martina", "f", "4232136" });
+                values: new object[,]
+                {
+                    { 2, "Diaz", 1, "42132121", "Calle 21 231", "veterinario@gmail.com", "14-9-1990", "ADS213", "Juan", "m", "42113212" },
+                    { 3, "Perez", 2, "321321321", "Calle 132 7654", "veterinario2@gmail.com", "28-3-1958", "XSD213", "Sol", "f", "4232136" },
+                    { 4, "Paz", 3, "25432567", "Calle 252 532", "veterinario3@gmail.com", "12-1-1974", "TDQ231", "Mar", "f", "42562132" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Veterinario",
-                columns: new[] { "VeterinarioId", "Apellido", "ConsultorioId", "Dni", "Domicilio", "Email", "FechaNacimiento", "Matricula", "Nombre", "Sexo", "Telefono" },
-                values: new object[] { 4, "Martinez", 3, "25432567", "Calle 252 532", "veterinario4@gmail.com", "12-1-1974", "TDQ231", "Claudio", "m", "42562132" });
+                table: "Registros",
+                columns: new[] { "RegistroId", "Analisis", "FechaCreacion", "HistoriaClinicaId" },
+                values: new object[,]
+                {
+                    { 1, "Analisis 1", new DateTime(2021, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 2, "Analisis 2", new DateTime(2021, 7, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 3, "Analisis 3", new DateTime(2021, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 4, "Analisis 1", new DateTime(2021, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 5, "Analisis 1", new DateTime(2021, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 },
+                    { 6, "Analisis 1", new DateTime(2021, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Turno",
+                columns: new[] { "TurnoId", "Fecha", "HoraInicio", "Horafin", "MascotaId", "VeterinarioId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 13, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 13, 9, 30, 0, 0, DateTimeKind.Unspecified), 1, 2 },
+                    { 3, new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 13, 17, 30, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 13, 18, 0, 0, 0, DateTimeKind.Unspecified), 1, 2 },
+                    { 2, new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 13, 10, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 13, 10, 30, 0, 0, DateTimeKind.Unspecified), 2, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Tratamiento",
+                columns: new[] { "TratamientoId", "Descripcion", "RegistroId" },
+                values: new object[,]
+                {
+                    { 1, "Tratamiento 1", 1 },
+                    { 2, "Tratamiento 2", 2 },
+                    { 3, "Tratamiento 3", 3 },
+                    { 4, "Tratamiento 1", 4 },
+                    { 5, "Tratamiento 1", 5 },
+                    { 6, "Tratamiento 1", 6 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cliente_ClienteId",

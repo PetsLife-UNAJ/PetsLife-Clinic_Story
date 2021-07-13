@@ -41,6 +41,7 @@ namespace AccessData
             new VeterinariaConfiguration(modelBuilder.Entity<Veterinaria>());
             new HistoriaClinicaConfiguration(modelBuilder.Entity<HistoriaClinica>());
             new RegistroConfiguration(modelBuilder.Entity<Registro>());
+            new TratamientoConfiguration(modelBuilder.Entity<Tratamiento>());
         }
     }
 }

@@ -16,11 +16,11 @@ namespace AccessData.Configuration
             entityBuilder.Property(x => x.Direccion).IsRequired().HasMaxLength(50);
             entityBuilder.Property(x => x.Telefono).IsRequired().HasMaxLength(12);
 
-            var cliente = new List<Cliente>();
+            var clientes = new List<Cliente>();
 
-            cliente.Add(new Cliente { ClienteId = 5, Nombre = "Jose", Apellido = "Bravo", Email = "cliente@gmail.com", Dni = "39876453", Direccion = "Calle 9 N2946", Telefono = "1136756432" });
-
-            entityBuilder.HasData(cliente);
+            clientes.Add(new Cliente { ClienteId = 5, Nombre = "Jose", Apellido = "Bravo", Email = "cliente@gmail.com", Dni = "39876453", Direccion = "Calle 9 N2946", Telefono = "1136756432" });
+            clientes.Add(new Cliente { ClienteId = 6, Nombre = "Julian", Apellido = "Nuzzo", Email = "cliente2@gmail.com", Dni = "39823513", Direccion = "Calle 123 n152", Telefono = "1136755231" });
+            entityBuilder.HasData(clientes);
         }
     }
 }
